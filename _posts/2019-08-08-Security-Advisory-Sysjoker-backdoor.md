@@ -25,6 +25,8 @@ This malware masquerades as a system update and generates its C2 by decoding a s
 
 The SysJoker malware is written in C++, and each sample is tailored for the specific operating system it targets. Both the macOS and Linux samples are fully undetected on VirusTotal.
 
+![Virustotal](https://149520725.v2.pressablecdn.com/wp-content/uploads/2022/01/Untitled-15.png.webp)
+
 ### Behavioral Analysis
 
 SysJoker's behavior is similar across all three operating systems. Unlike the Mac and Linux samples, the Windows version contains a first-stage dropper, a DLL (`d71e1a6ee83221f1ac7ed870bc272f01`) uploaded to VirusTotal as `style-loader.ts` with only a few detections at the time of writing.
@@ -33,8 +35,16 @@ During the analysis, SysJoker exhibited the following behaviors:
 
 - **Dropper Execution:** Executes a first-stage dropper on Windows, while on macOS and Linux, it directly masquerades as a system process.
 - **Persistence Mechanism:** Establishes persistence on the infected system by adding entries to the registry run key or creating cron jobs.
-- **C2 Communication:** Communicates with its Command and Control (C2) server to receive instructions and upload collected data.
+- **C2 Communication:** Communicates with its Command and Control (C2) server to receive instructions and upload collected data.json
+
+![JSON object built in memory by SysJoker](https://149520725.v2.pressablecdn.com/wp-content/uploads/2022/01/Untitled-17.png.webp)
+
+
+
 - **Encoding Scheme:** Implements a decoding/encoding scheme using a hardcoded XOR key for communication with the C2.
+
+![XOR](https://149520725.v2.pressablecdn.com/wp-content/uploads/2022/01/Untitled-19.png.webp)
+
 
 #### C2 Communication Flow
 
@@ -44,7 +54,7 @@ During the analysis, SysJoker exhibited the following behaviors:
 4. SysJoker runs a loop, sending requests to the C2's `/api/req` directory with the unique token to receive instructions.
 5. The C2 can respond with instructions such as `exe` (drop and run an executable), `cmd` (run a command and upload the response), `remove_reg` (self-deletion), and `exit`.
 
-![SysJoker C2 Communication](/assets/images/sysjoker-c2.jpg)
+![SysJoker C2 Communication](https://149520725.v2.pressablecdn.com/wp-content/uploads/2022/01/Untitled-21.png.webp)
 
 ### IoCs Tailored for Target Systems
 

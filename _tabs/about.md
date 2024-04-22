@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-# Shirish Inamdar
+# **Shirish Inamdar**
 
 
 ![Shirish Inamdar](https://media.licdn.com/dms/image/C4D03AQGigYXmh2qPrA/profile-displayphoto-shrink_800_800/0/1606059161777?e=2147483647&v=beta&t=j2RIXmfHSGqIQCtjJuzZa98umgmGTtGGU3eqfADWnj4)
@@ -23,21 +23,41 @@ My journey in cybersecurity is defined by a relentless pursuit of excellence and
 
 - **Championed Automation and Intelligence:** Integrated OSINT and SOAR to automate SOC tasks, driving efficiency gains and elevating analyst productivity.
 
-### Education & Certifications
+### Education
 
 - **George Washington University:** Pursuing Masters in Cybersecurity (Computer Science)
-- **IIIT Pune:** Bachelors in Electronics and Telecommunication
-- **Certifications:** CompTIA Security+, CEH v10, RHCSA, CompTIA Network+, AWS Cloud Security Foundations.
 
-### Conferences
+- **IIIT Pune:** Bachelors in Electronics and Telecommunication
+
+
+
+### Certifications:
+
+
+**CompTIA Security+, CEH v10, RHCSA, CompTIA Network+, AWS Cloud Security Foundations.**
+
+### Active CTF Player
+
+**Participated in MAPLE CTF AND National Cyber League and was among top competitors.**
+
+**Tryhackme**   October 2022-Present
+**Hackthebox**  November 2022-Present
+**Defendtheweb** May 2022
+**Hackthissite** June 2022
+**LetsDefend**  May 2023-Present
+
+
+### Conferences and Volunteering
 
 **Open Cybersecurity Alliance**
-Cybersecurity Automation Village  | April 2024-Present
-Google Developer Student Club | June 2023-Present
+Cybersecurity Automation Village  | April 2024
+
+**Google Developer Student Club** | June 2023-Present
+
+**IEEE Member** | December 2017 
+
 
 ### Skills & Expertise
-
-
 
 
 - **Incident Response, Network Security, Threat Intelligence, Digital Forensics, Penetration Testing****AWS, Cloud Security, Endpoint Detection and Response (EDR)**

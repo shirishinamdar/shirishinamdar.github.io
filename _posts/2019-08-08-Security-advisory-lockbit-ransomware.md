@@ -1,7 +1,7 @@
 ---
 title: Security Advisory - LockBit Ransomware
 author: Shirish Inamdar
-date: 2024-04-05 00:00:00 +0800
+date: 2021-08-30 00:00:00 +0800
 categories: [Security, Ransomware]
 tags: [LockBit, ransomware, security advisory]
 ---
@@ -32,11 +32,13 @@ Viable targets are organizations that will feel hindered enough by the disruptio
 
 ### LockBit 2.0: Raising the Stakes
 
+
+
 The new variant of LockBit 2.0 Ransomware is capable of encrypting Windows domains with Active Directory Group Policy policies. Researchers have discovered this novel approach, which automates the interaction and subsequent encryption of Windows domains, adding a formidable layer of complexity to the attack chain.
 
 One notable incident involved the renowned consulting firm Accenture, which confirmed a ransomware attack by LockBit 2.0 on August 11th, 2021. The operators threatened to release the company's data and sell insider information, showcasing the grave consequences organizations face when targeted by this malicious software.
 
-![LockBit Countdown Clock](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cybereason.com%2Fblog%2Faccenture-responds-following-lockbit-ransomware-attack&psig=AOvVaw1AIGuM-Wzuq4FcJBy-MCiH&ust=1713673149492000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOjUhY34z4UDFQAAAAAdAAAAABAE)
+![LockBit Countdown Clock](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cybereason.com%2Fblog%2Faccenture-responds-following-lockbit-ransomware-attack&psig=AOvVaw0zwtlA4zNVJcvFaz8daM_q&ust=1713849308445000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLiioauI1YUDFQAAAAAdAAAAABAh)
 
 ## Technical Analysis
 
@@ -52,7 +54,7 @@ Once the malicious file is executed, the following sequence unfolds:
 
 This method is known as CMSTP (Client-side Microsoft Service Provider).
 
-
+![CMSTP](https://www.cynet.com/wp-content/uploads/2022/04/word-image-5-5.png)
 
 3. The ransomware dynamically uses the function `IsWow64Process` to check if the victim's OS is running a x64 system and then uses the functions `Wow64DisableWow64FsRedirection` and `Wow64RevertWow64FsResdirection`. If the malware can access these functions, it will use the first to destroy all shadow volumes and the protections of the OS in the next boot, and later, will recover the redirection with the other function. If it cannot get these functions, LockBit will delete the shadow volume directly through the function `ShellExecuteA` or with the function `CreateProcessA`.
 
