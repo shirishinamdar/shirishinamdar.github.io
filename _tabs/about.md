@@ -55,7 +55,8 @@ Redhat Certified System Administrator v7 (RHCSA) - January 28, 2018
 
 [View all my certifications here](https://drive.google.com/file/d/11-9YgKKwBAyATaIs5abf3SWKjBld64mD/view?usp=sharing)
 
-Trainings: CCNA (Cisco Certified Network Associate)| MCSA: Windows Server 2016| EC-Council: Cisco Certified Secure User| CompTIA (A+) Hardware
+Other Trainings Completed : CCNA (Cisco Certified Network Associate)| MCSA: Windows Server 2016| EC-Council: Cisco Certified Secure User| CompTIA (A+) Hardware
+
 
 
 ### CTF Player
@@ -78,8 +79,6 @@ insights on security engineering and sparking enthusiasm for cybersecurity caree
 **Open Cybersecurity Alliance** Cybersecurity Automation Village | April 2024
 
 **Google Developer Student Club(GDSC)** | June 2023-Present
-
-**IEEE** | December 2017 
 
 
 ### Skills & Expertise
