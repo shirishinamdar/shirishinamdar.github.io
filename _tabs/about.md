@@ -66,7 +66,7 @@ CCNA (Cisco Certified Network Associate)| Palo Alto Networks Cybersecurity Profe
 
 Active Participant on: **Tryhackme** | **Hackthebox** | **Defendtheweb** | **Hackthissite** | **LetsDefend**  
 
-### Achievements 
+### Other Achievements 
 
 **Best Performance Award** at Securview Inc. as Team Lead, for driving **85%** quarter- over-quarter optimization of SOC operations
 and incident response.[Link](https://drive.google.com/file/d/1-GR0-hsWxc6UzsVwtNBRGwVW3SRyRwV1/view?usp=sharing)
@@ -98,17 +98,15 @@ Cybersecurity Automation Village | April 2024
 
 ### Letter of Recommendation
 
-**Dr. Sean S. Baggott**, Adjunct Faculty
-The George Washington University, School of Engineering and Applied Science
-Dr. Baggott's letter strongly endorses me for incident response and cybersecurity roles based on: Exceptional academic achievement, particularly in his **Management of Information & Systems Security** course.
+**Dr. Sean S. Baggott**, Adjunct Faculty at The George Washington University, strongly endorses me for incident response and cybersecurity roles based on exceptional academic achievement and demonstrated work experience in EMSE 6540: Management of Information & Systems Security Course.
 
-1.Demonstrated leadership abilities to inspire and motivate others
+1.Demonstrated leadership abilities to inspire and motivate others.
 
-2.Over 3 years of hands-on professional experience in incident response, threat intelligence, and SOC operations
+2.Over 3 years of hands-on professional experience in incident response, threat intelligence, and SOC operations.
 
-3.Keen insights and adept application of cybersecurity concepts to practical challenges
+3.Keen insights and adept application of cybersecurity concepts to practical challenges.
 
-4.Unwavering dedication, comprehensive understanding, and intellectual prowess in the cybersecurity domain
+4.Unwavering dedication, comprehensive understanding, and intellectual prowess in the cybersecurity domain.
 
 The letter highlights my positive impact in academic and extracurricular settings through outstanding character, interpersonal skills, and commitment to excellence.
 Access the full recommendation letter here:
