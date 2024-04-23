@@ -1,7 +1,7 @@
 ---
 title: Security Advisory - SysJoker Backdoor
 author: Shirish Inamdar
-date: 2024-04-03 00:34:00 +0800
+date: 2021-12-07 00:34:00 +0800
 categories: [Security, Malware]
 tags: [SysJoker, malware, security advisory]
 ---

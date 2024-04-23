@@ -55,7 +55,8 @@ Redhat Certified System Administrator v7 (RHCSA) - January 28, 2018
 
 [View all my certifications here](https://drive.google.com/file/d/11-9YgKKwBAyATaIs5abf3SWKjBld64mD/view?usp=sharing)
 
-Other Trainings Completed : CCNA (Cisco Certified Network Associate)| Palo Alto Networks Cybersecurity Professional Certificate | MCSA: Windows Server 2016| EC-Council: Cisco Certified Secure User| CompTIA (A+) Hardware
+**Other Trainings Completed :** 
+CCNA (Cisco Certified Network Associate)| Palo Alto Networks Cybersecurity Professional Certificate | MCSA: Windows Server 2016| EC-Council: Cisco Certified Secure User| CompTIA (A+) Hardware
 
 
 
@@ -79,7 +80,6 @@ insights on security engineering and sparking enthusiasm for cybersecurity caree
 **Open Cybersecurity Alliance** 
 Cybersecurity Automation Village | April 2024
 
-
 **Google Developer Student Club(GDSC)** | June 2023-Present
 
 
@@ -98,12 +98,16 @@ Cybersecurity Automation Village | April 2024
 
 ### Letter of Recommendation
 
-From: **Dr. Sean S. Baggott**, Adjunct Faculty
+**Dr. Sean S. Baggott**, Adjunct Faculty
 The George Washington University, School of Engineering and Applied Science
-Dr. Baggott's letter strongly endorses me for incident response and cybersecurity roles based on: Exceptional academic achievement, particularly in his **Management of Information & Systems Security** course
+Dr. Baggott's letter strongly endorses me for incident response and cybersecurity roles based on: Exceptional academic achievement, particularly in his **Management of Information & Systems Security** course.
+
 1.Demonstrated leadership abilities to inspire and motivate others
+
 2.Over 3 years of hands-on professional experience in incident response, threat intelligence, and SOC operations
+
 3.Keen insights and adept application of cybersecurity concepts to practical challenges
+
 4.Unwavering dedication, comprehensive understanding, and intellectual prowess in the cybersecurity domain
 
 The letter highlights my positive impact in academic and extracurricular settings through outstanding character, interpersonal skills, and commitment to excellence.

@@ -11,6 +11,8 @@ author: "Shirish Inamdar"
 
 This document outlines the Standard Operating Procedure (SOP) for incident investigation with respect to major cyber threats. It provides a framework for understanding and responding to various malicious activities, including their indicators, investigative approaches, and potential remediation actions.
 
+![Diagram](https://drive.google.com/file/d/1NH6Q8Io6VFa-GDn7NhTC0Ze0nNgYotyU/view?usp=sharing)
+
 # Objective/Purpose
 
 The primary objective of this SOP is to establish a comprehensive and systematic approach to incident investigation, addressing the following key threats:
