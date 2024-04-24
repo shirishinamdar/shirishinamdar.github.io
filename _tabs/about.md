@@ -15,7 +15,7 @@ My trajectory in cybersecurity is marked by an unwavering commitment to excellen
 
 ### Experience
 
-**Security Engineer** Securview Inc, August 2019-July 2020
+**Security Engineer**  Securview Inc.  *August 2019-July 2020*
 
 Monitored, analyzed, and managed a variety of network and host-based security appliance logs, encompassing over 1000 core and edge network devices and servers (including Active Directory, IDS, IPS, DNS, firewalls, routers, switches, databases, etc.), to ensure comprehensive threat detection and response, resulting in a 20% increase in detection accuracy.
 
@@ -35,7 +35,7 @@ Coordinated escalations and collaborated with internal technology teams to ensur
 
 Worked diligently on the assigned ticket queue, understanding and meeting expectations outlined in all tasked Service Level Agreement (SLA) agreements, ensuring consistent and reliable support for security incidents, achieving 98% adherence to SLA targets. 
 
-**Senior Security Engineer** | Securview Inc, August 2021 - July 2022
+**Senior Security Engineer**  Securview Inc.  *August 2021 - July 2022*
 
 Revamped enterprise SIEM infrastructure by developing and optimizing 50+ threat detection usecases aligned with MITRE ATT&CK and NIST framework, resulting in enhanced security monitoring capabilities, faster alerting resulting in 80% improvement in threatdetection and response.
 
@@ -47,7 +47,7 @@ Led implementation of OSINT and SOAR integration to automate daily SOC tasks (mo
 
 Created Cybersecurity advisories on threats like REvil and LockBit ransomware, incorporating IOCs sourced from OSINT platforms such as AlienVault and Recorded Future for proactive infrastructure protection, remediating potential risks by 85%.
 
-**IT Specialist** George Washington University | October - Present
+**IT Specialist**  George Washington University  *October - Present*
 
 Spearheaded proactive techniques to identify security incidents in advance, leading to an 85% improvement in service delivery efficiencyas a part-time IT Specialist at GWU, providing remote and in-person IT support to 5000+ faculty and staff.
 
