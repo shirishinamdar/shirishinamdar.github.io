@@ -13,15 +13,45 @@ My trajectory in cybersecurity is marked by an unwavering commitment to excellen
 
 [Resume](https://drive.google.com/file/d/1LgxhOdTFSas5kqxZNHkPhtsVdLSSJJ3g/view?usp=sharing)
 
-### Notable Achievements
+### Experience
 
-- **Transformed Incident Response:** Revolutionized enterprise SIEM infrastructure, enhancing threat detection and response capabilities to fortify organizational security postures.
+**Security Engineer** Securview Inc, August 2019-July 2020
 
-- **Led Cutting-edge SOC Operations:** Mentored analysts and optimized security tools, fostering a collaborative environment for threat analysis and incident response.
+Monitored, analyzed, and managed a variety of network and host-based security appliance logs, encompassing over 1000 core and edge network devices and servers (including Active Directory, IDS, IPS, DNS, firewalls, routers, switches, databases, etc.), to ensure comprehensive threat detection and response, resulting in a 20% increase in detection accuracy.
 
-- **Pioneered Proactive Threat Hunting:** Developed innovative strategies to preemptively identify and neutralize malicious activities across enterprise networks.
+Provided real-time guidance to customers on network configuration, security settings, policies, risk assessment, impact analysis, and attack mitigation procedures, facilitating informed decision-making regarding incident remediation actions and escalation pathways, resulting in a 15% reduction in incident response time.
 
-- **Championed Automation and Intelligence:** Integrated OSINT and SOAR to automate SOC tasks, driving efficiency gains and elevating analyst productivity.
+Proactively researched security information to identify potential threats, employing use cases, reverse engineering of malwares, and analysis of Indicators of Compromise (IOC) across the network landscape to preemptively safeguard the organization against emerging risks, leading to a 30% decrease in successful cyber attacks.
+
+Created and managed operational reports, including Key Performance Indicators (KPIs), weekly, monthly, and quarterly metrics, as well as vulnerability assessment metrics, to track and communicate the effectiveness of security measures.
+
+Prioritized and differentiated potential incidents from false alarms, ensuring efficient allocation of resources and timely response to genuine security threats, reducing false positive alerts by 40%.
+
+Followed detailed processes and procedures to analyze, investigate, and assist in the remediation of critical information security incidents, maintaining adherence to established protocols and standards and Deployed search techniques to fulfill specific requirements and configured reports tailored to organizational needs, resulting in an increase in report accuracy and relevance.
+
+Excelled in a fast-paced, challenging operational environment with 24x7 rotational shifts, demonstrating adaptability and resilience in managing security operations effectively.
+
+Coordinated escalations and collaborated with internal technology teams to ensure timely resolution of issues, fostering a culture of teamwork and shared responsibility for cybersecurity, resulting in a 30% reduction in mean time to resolution (MTTR) for escalated incidents.
+
+Worked diligently on the assigned ticket queue, understanding and meeting expectations outlined in all tasked Service Level Agreement (SLA) agreements, ensuring consistent and reliable support for security incidents, achieving 98% adherence to SLA targets. 
+
+**Senior Security Engineer** | Securview Inc, August 2021 - July 2022
+
+Revamped enterprise SIEM infrastructure by developing and optimizing 50+ threat detection usecases aligned with MITRE ATT&CK and NIST framework, resulting in enhanced security monitoring capabilities, faster alerting resulting in 80% improvement in threatdetection and response.
+
+Directed SOC operations including fine-tuning of SIEM, firewalls, IDS/IPS, EDR, while mentoring a 10-member team of Tier 1 CSIRTanalysts in threat analysis, UEBA, log analysis, IOC investigation, incident response procedures by creating playbooks and SOPs.
+
+Formulated threat hunting using Microsoft 365 Defender’s Kusto Query Language, effectively identifying indicators of compromiseacross a 7000+ node enterprise network and promptly recognizing and preventing malicious activities.
+
+Led implementation of OSINT and SOAR integration to automate daily SOC tasks (monitoring, reporting, threat intelligence) across 10+client networks, resulting in a 70% increase in analyst productivity.
+
+Created Cybersecurity advisories on threats like REvil and LockBit ransomware, incorporating IOCs sourced from OSINT platforms such as AlienVault and Recorded Future for proactive infrastructure protection, remediating potential risks by 85%.
+
+**IT Specialist** George Washington University | October - Present
+
+Spearheaded proactive techniques to identify security incidents in advance, leading to an 85% improvement in service delivery efficiencyas a part-time IT Specialist at GWU, providing remote and in-person IT support to 5000+ faculty and staff.
+
+Collaborated with Information Security Center to investigate and document 50+ security incidents, identifying root causes,recommending preventative controls and improving infosec awareness by 70%.
 
 ### Education
 
@@ -57,7 +87,6 @@ Redhat Certified System Administrator v7 (RHCSA) - January 28, 2018
 
 **Other Trainings Completed :** 
 CCNA (Cisco Certified Network Associate)| Palo Alto Networks Cybersecurity Professional Certificate | MCSA: Windows Server 2016| EC-Council: Cisco Certified Secure User| CompTIA (A+) Hardware
-
 
 
 ### CTF Player
