@@ -17,7 +17,7 @@ My trajectory in cybersecurity is marked by an unwavering commitment to excellen
 
 **Security Engineer**  Securview Inc.  *August 2019-July 2020*
 
-Monitored, analyzed, and managed a variety of network and host-based security appliance logs, encompassing over 1000 core and edge network devices and servers (including Active Directory, IDS, IPS, DNS, firewalls, routers, switches, databases, etc.), to ensure comprehensive threat detection and response, resulting in a 20% increase in detection accuracy.
+Monitored, analyzed, and managed a variety of network and host-based security appliance logs, encompassing over 1000 core and edge network devices and servers (including Active Directory, IDS, IPS, DNS, firewalls, routers, switches, databases, etc.), to ensure comprehensive threat detection and response.
 
 Provided real-time guidance to customers on network configuration, security settings, policies, risk assessment, impact analysis, and attack mitigation procedures, facilitating informed decision-making regarding incident remediation actions and escalation pathways, resulting in a 15% reduction in incident response time.
 
@@ -33,7 +33,7 @@ Excelled in a fast-paced, challenging operational environment with 24x7 rotation
 
 Coordinated escalations and collaborated with internal technology teams to ensure timely resolution of issues, fostering a culture of teamwork and shared responsibility for cybersecurity, resulting in a 30% reduction in mean time to resolution (MTTR) for escalated incidents.
 
-Worked diligently on the assigned ticket queue, understanding and meeting expectations outlined in all tasked Service Level Agreement (SLA) agreements, ensuring consistent and reliable support for security incidents, achieving 98% adherence to SLA targets. 
+Worked diligently on the assigned ticket queue, understanding and meeting expectations outlined in all tasked Service Level Agreement (SLA) agreements, ensuring consistent and reliable support for security incidents. 
 
 **Senior Security Engineer**  Securview Inc.  *August 2021 - July 2022*
 
