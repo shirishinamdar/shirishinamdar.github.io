@@ -45,7 +45,7 @@ In this tutorial, we will learn how to set up an Azure honeypot virtual machine 
 2. After connecting Azure Sentinel, copy the IP address of the honeypot VM.
 3. Use Remote Desktop Protocol (RDP) to connect to the VM, entering the username and password you set earlier.
 4. Disable Windows Defender on the VM to allow unhindered access.
-![Firewall] https://miro.medium.com/v2/resize:fit:828/format:webp/0*vVYN5m1qI5mXVPcf
+
 
 # Step 5: Collect Failed Login Logs
 
