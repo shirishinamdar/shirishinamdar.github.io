@@ -19,7 +19,6 @@ Highlights include a 20% increase in threat detection accuracy, a 15% reduction 
 Currently, as an IT Specialist at George Washington University, Shirish proactively identifies security incidents, collaborates with the Information Security Center, and drives a 70% improvement in infosec awareness through incident documentation and recommendations.
 
 
-
 ## Education and Certifications
 
 Shirish's educational background includes a Bachelor's in Electronics and Telecommunication from IIIT Pune and a Master's in Cybersecurity (Computer Science) from George Washington University.
