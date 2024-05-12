@@ -9,7 +9,7 @@ author: "Shirish Inamdar"
 ---
 ![Diagram](https://miro.medium.com/v2/resize:fit:828/format:webp/0*jz0J7MsU_MFhrhWJ.gif)
 
-In this tutorial, we will learn how to set up an Azure honeypot virtual machine and configure Azure Sentinel to visualize and analyze live cyber attacks from around the world. By creating an intentionally vulnerable system, we can gain valuable insights into the tactics, techniques, and procedures (TTPs) used by attackers, enabling us to enhance our security posture and incident response capabilities proactively.
+Here's how to set up an Azure honeypot virtual machine and configure Azure Sentinel to visualize and analyze live cyber attacks from around the world. By creating an intentionally vulnerable system, we can gain valuable insights into the tactics, techniques, and procedures (TTPs) used by attackers, enabling us to enhance our security posture and incident response capabilities proactively.
 
 # Step 1: Create a Virtual Machine
 

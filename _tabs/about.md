@@ -4,7 +4,7 @@ order: 4
 ---
 # Shirish Inamdar
 
-Shirish Inamdar is a **cybersecurity innovator** driven by passion, innovation, and an unwavering commitment to excellence. With over three years of hands-on experience, he specializes in detection engineeing , incident response, threat intelligence, and SOC operations.
+Shirish Inamdar is a **cybersecurity enthusiast** driven by passion, and an unwavering commitment to excellence. With over three years of hands-on experience, he specializes in detection engineeing , incident response, threat intelligence, and SOC operations.
 
 Shirish's expertise lies in enhancing and threat detection through SIEM, deploying security automation, threat hunting, log analysis, and integrating open-source intelligence (OSINT) via SOAR. His robust analytical abilities have been honed through activities like reverse engineering malware, scrutinizing logs, and investigating indicators of compromise across enterprise networks.
 
@@ -29,12 +29,12 @@ Additionally, Shirish actively participates in Capture the Flag (CTF) competitio
 
 ## Achievements and Contributions
 
-Shirish's dedication to cybersecurity excellence has been recognized through various achievements and contributions. He received the Best Performance Award at Securview Inc. for driving an 85% quarter-over-quarter optimization of SOC operations and incident response. Furthermore, he was invited as a guest speaker at IIIT Pune, where he delivered an engaging "Career in Cybersecurity" session, inspiring students to pursue careers in field of cybersecurity.
+Shirish's dedication to cybersecurity excellence has been recognized through various achievements and contributions. He received the Best Performance Award at Securview Inc. for driving an 85% quarter-over-quarter optimization of SOC operations and incident response. Furthermore, he was invited as a guest speaker at IIIT Pune, where he delivered an engaging **"Career in Cybersecurity"** session, inspiring students to pursue careers in field of cybersecurity.
 
-Shirish is an active participant in the cybersecurity community, volunteering at events like the Open Cybersecurity Alliance's Cybersecurity Automation Village and serving as a member of the Google Developer Student Club (GDSC).
+Shirish is an active participant in the cybersecurity community, volunteering at events like the Open Cybersecurity Alliance's **Cybersecurity Automation Village** and serving as a member of the **Google Developer Student Club (GDSC)**
 
 With a diverse skill set encompassing incident response, network security, threat intelligence, digital forensics, penetration testing, AWS, cloud security, and endpoint detection and response (EDR), Shirish is well-equipped to tackle complex cybersecurity challenges. He is proficient in programming languages such as Python, HTML, CSS, JavaScript, x86 Assembly, Bash, and Kusto Query Language, and has extensive experience with SIEM tools like Microsoft ATP , IBM QRadar 
 
 [Letter of Recommendation from Dr. Sean S. Baggott](https://drive.google.com/file/d/1VR98wDnb1rXgcEFwM0ZQmGzuzFZi1BYU/view?usp=sharing)
 
-Driven by a passion for innovation and a commitment to cybersecurity excellence, Shirish is always seeking new opportunities to build a safer digital world.
+Driven by a passion for cybersecurity and a commitment to excellence, Shirish is always seeking new opportunities to build a safer digital world.
