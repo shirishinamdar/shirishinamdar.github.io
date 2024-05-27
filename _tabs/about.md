@@ -10,8 +10,7 @@ Shirish's expertise lies in enhancing and threat detection through SIEM, deployi
 
 A lifelong learner, Shirish actively seeks new challenges to secure digital realms. He derives immense satisfaction from challenging norms and spearheading innovation within the ever-evolving cybersecurity landscape.
 
-## Professional Experience: [Resume](https://drive.google.com/file/d/1LgxhOdTFSas5kqxZNHkPhtsVdLSSJJ3g/view?usp=sharing)
-
+## Professional Experience
 Shirish's professional journey has been marked by notable achievements across various cybersecurity roles. As a Security Engineer and Senior Security Engineer at Securview Inc.India where he excelled in real-time guidance, incident response, vulnerability research, threat detection, report creation, and process optimization.
 
 Highlights include a 20% increase in threat detection accuracy, a 15% reduction in incident response time, and a 30% decrease in successful cyber attacks through proactive threat identification. Additionally, Shirish revamped the enterprise SIEM infrastructure, developing 50+ threat detection use cases aligned with industry frameworks, resulting in an 80% improvement in threat detection and response.
