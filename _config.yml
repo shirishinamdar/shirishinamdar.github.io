@@ -94,7 +94,7 @@ theme_mode: # [light | dark]
 cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "https://cyberguardian.courses/wp-content/uploads/2024/11/Shirish.png"
+avatar: "https://media.licdn.com/dms/image/v2/D4E03AQGwe_t84MKaJg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1726457477907?e=1741824000&v=beta&t=5cgMFqvPg3YWNzanu5KsMcL2sl_Y5hXTxGEoi9wa6S8"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
