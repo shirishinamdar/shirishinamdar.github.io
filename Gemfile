@@ -16,8 +16,16 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
 end
 
 # Performance-booster for watching directories on Windows
-gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+# gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 
 # Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
 # do not have a Java counterpart.
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
+# Source - https://stackoverflow.com/questions/65989040/bundle-exec-jekyll-serve-cannot-load-such-file/72589554#72589554
+# Posted by Full Array
+# Retrieved 2025-11-06, License - CC BY-SA 4.0
+
+gem "jekyll", "~> 4.3.3"
+gem "csv"
+gem "base64"
+gem "webrick"
