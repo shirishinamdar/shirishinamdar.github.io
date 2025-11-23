@@ -3,7 +3,6 @@ title: "Dissecting SMTP Email Traffic with Wireshark"
 date: 2025-11-12
 categories: [Network Analysis, Protocol Study]
 tags: [SMTP, Wireshark, Packet Capture, Email Forensics]
-image: /assets/img/blog/smtp-wireshark/smtpsa.png
 description: Step-by-step analysis of SMTP communication captured in Wireshark, revealing timestamps, email client information, message content, and packet structure.
 ---
 
@@ -35,7 +34,7 @@ To protect data, encryption layers like **SSL/TLS** or **STARTTLS** are added to
 
 ---
 
-## 1️⃣ When Did It Happen?
+## 1️. When Did It Happen?
 
 The first packet in the capture shows the timestamp:
 
@@ -44,11 +43,13 @@ The first packet in the capture shows the timestamp:
 This marks the start of the email transaction.  
 The same timestamp appears across **14 fragments**, which together form the complete email message.
 
+![Timestamp](assets\img\blog\smtp-wireshark\2.png)
+
 This indicates that the email was transmitted as multiple TCP segments but captured as part of a continuous SMTP session.
 
 ---
 
-## 2️⃣ The Email Client
+## 2️. The Email Client
 
 By inspecting the **SMTP/IMF** section in Wireshark, the header information identifies the email client used:
 
@@ -56,9 +57,11 @@ By inspecting the **SMTP/IMF** section in Wireshark, the header information iden
 
 This provides insight into the mail user agent (MUA) that composed and sent the message.
 
+![Email Client](assets\img\blog\smtp-wireshark\3.png)
+
 ---
 
-## 3️⃣ The Email Content
+## 3️. The Email Content
 
 The content of the email can be extracted in two ways:
 
@@ -66,8 +69,13 @@ The content of the email can be extracted in two ways:
 Open the same frame that identifies the SMTP protocol, then expand **Internet Message Format (IMF)**.  
 Here, Wireshark presents each MIME component of the email, including:
 
+![IMF Layer](assets\img\blog\smtp-wireshark\4.png)
+
 - **Plain text** message body (`text/plain`)
+
 - **Attachment**: `NEWS.txt`
+
+![Plain text and Attachment](assets\img\blog\smtp-wireshark\5.png)
 
 Each part of the email is represented as a separate MIME section, allowing granular viewing of both the message and attachments.
 
@@ -76,13 +84,17 @@ Locate the `SMTP: DATA` frame, right-click, and choose **Follow → TCP Stream**
 This reconstructs the full conversation, including the raw email content as seen by the mail server.  
 This approach is especially useful when analyzing message headers or investigating email injection attacks.
 
-![SMTP Data Stream Example](/assets/img/68fa70e5-0140-49ab-99bb-412b470b0175.png)
+![SMTP Stream Data](assets\img\blog\smtp-wireshark\6.png)
+
+![Content](assets\img\blog\smtp-wireshark\7.png)
 
 ---
 
-## 4️⃣ Communication Flow and Network Parameters
+## 4️. Communication Flow and Network Parameters
 
 A good way to understand the overall SMTP conversation is to check the **Protocol Hierarchy Statistics** in Wireshark.
+
+![Protocol Hierarchy Statistics](assets\img\blog\smtp-wireshark\8.png)
 
 From the capture:
 
