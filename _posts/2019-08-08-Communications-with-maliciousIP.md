@@ -9,13 +9,13 @@ tags: [Malicious IP, Malicious URL, Outbound Communication]
 
 # Objective & Purpose
 
-The primary objective of this document is to establish a streamlined process for handling incidents involving outbound communication with malicious IP addresses or URLs. By following the outlined procedures, security teams can swiftly identify security incidents, assess risks, analyze events, and recommend appropriate steps to restore normal service operations while minimizing adverse impacts on business operations.
+The primary objective of this article is to establish a streamlined process for handling incidents involving outbound communication with malicious IP addresses or URLs. By following the outlined procedures, security teams can swiftly identify security incidents, assess risks, analyze events, and recommend appropriate steps to restore normal service operations while minimizing adverse impacts on business operations.
 
 This comprehensive guide serves as an invaluable resource for Security Operations Center (SOC) teams, enabling them to effectively perform analysis and provide well-informed recommendations to clients regarding communication with blacklisted IP addresses or URLs.
 
 # Audience
 
-The intended audience for this document is the SOC Team, responsible for monitoring, detecting, and responding to potential security threats and incidents.
+The intended audience for this blogpost is the SOC Team, responsible for monitoring, detecting, and responding to potential security threats and incidents.
 
 # Process and Recommendations
 
