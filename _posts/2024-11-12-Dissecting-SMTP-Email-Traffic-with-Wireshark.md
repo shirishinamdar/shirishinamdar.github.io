@@ -43,7 +43,7 @@ The first packet in the capture shows the timestamp:
 This marks the start of the email transaction.  
 The same timestamp appears across **14 fragments**, which together form the complete email message.
 
-![Timestamp](assets\img\blog\smtp-wireshark\2.png)
+![Timestamp](assets/img/blog/smtp-wireshark/2.png)
 
 This indicates that the email was transmitted as multiple TCP segments but captured as part of a continuous SMTP session.
 
@@ -57,7 +57,7 @@ By inspecting the **SMTP/IMF** section in Wireshark, the header information iden
 
 This provides insight into the mail user agent (MUA) that composed and sent the message.
 
-![Email Client](assets\img\blog\smtp-wireshark\3.png)
+![Email Client](assets/img/blog/smtp-wireshark/3.png)
 
 ---
 
@@ -69,13 +69,13 @@ The content of the email can be extracted in two ways:
 Open the same frame that identifies the SMTP protocol, then expand **Internet Message Format (IMF)**.  
 Here, Wireshark presents each MIME component of the email, including:
 
-![IMF Layer](assets\img\blog\smtp-wireshark\4.png)
+![IMF Layer](assets/img/blog/smtp-wireshark/4.png)
 
 - **Plain text** message body (`text/plain`)
 
 - **Attachment**: `NEWS.txt`
 
-![Plain text and Attachment](assets\img\blog\smtp-wireshark\5.png)
+![Plain text and Attachment](assets/img/blog/smtp-wireshark/5.png)
 
 Each part of the email is represented as a separate MIME section, allowing granular viewing of both the message and attachments.
 
@@ -84,9 +84,9 @@ Locate the `SMTP: DATA` frame, right-click, and choose **Follow → TCP Stream**
 This reconstructs the full conversation, including the raw email content as seen by the mail server.  
 This approach is especially useful when analyzing message headers or investigating email injection attacks.
 
-![SMTP Stream Data](assets\img\blog\smtp-wireshark\6.png)
+![SMTP Stream Data](assets/img/blog/smtp-wireshark/6.png)
 
-![Content](assets\img\blog\smtp-wireshark\7.png)
+![Content](assets/img/blog/smtp-wireshark/7.png)
 
 ---
 
@@ -94,7 +94,7 @@ This approach is especially useful when analyzing message headers or investigati
 
 A good way to understand the overall SMTP conversation is to check the **Protocol Hierarchy Statistics** in Wireshark.
 
-![Protocol Hierarchy Statistics](assets\img\blog\smtp-wireshark\8.png)
+![Protocol Hierarchy Statistics](assets/img/blog/smtp-wireshark/8.png)
 
 From the capture:
 
