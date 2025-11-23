@@ -19,7 +19,7 @@ A new multi-platform backdoor malware named 'SysJoker' has emerged in the wild, 
 
 SysJoker was first discovered during an active attack on a Linux-based web server of a leading educational institution. After further investigation, researchers found that SysJoker also has Mach-O and Windows PE versions. Based on Command and Control (C2) domain registration and samples found on VirusTotal, the SysJoker attack is estimated to have been initiated during the second half of 2021.
 
-This malware masquerades as a system update and generates its C2 by decoding a string retrieved from a text file hosted on Google Drive. During analysis, the C2 changed three times, indicating the attacker is actively monitoring for infected machines. Based on victimology and malware behavior, SysJoker is assessed to be targeting specific victims. The malware was uploaded to VirusTotal with the `.ts` suffix, typically used for TypeScript files, suggesting a possible attack vector via an infected npm package.
+This malware masquerades as a system update and generates its C2 by decoding a string retrieved from a text file hosted on Google Drive. During analysis, the C2 changed three times, indicating the attacker is actively monitoring for infected machines. Based on victimology and malware behavior from this scenario, SysJoker is assessed to be targeting specific victims. The malware was uploaded to VirusTotal with the `.ts` suffix, typically used for TypeScript files, suggesting a possible attack vector via an infected npm package.
 
 ## Technical Details
 
