@@ -102,7 +102,7 @@ From the capture:
 - All communication occurs over **TCP** (88.3% of packets), confirming SMTP’s connection-oriented design.  
 - The **Internet Message Format (IMF)** packets represent **1.7%** of total packets but carry **56.4%** of all bytes — this large size corresponds to the email body and attachments.
 
-Filtering the traffic with Wireshark gives access to the full sequence of SMTP commands such as HELO, MAIL FROM, RCPT TO, and DATA.
+Filtering the traffic with Wireshark `smtp || tcp.port == 25` gives access to the full sequence of SMTP commands such as HELO, MAIL FROM, RCPT TO, and DATA.
 
 ---
 
