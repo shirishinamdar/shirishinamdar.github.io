@@ -1,7 +1,7 @@
 ---
 title: "Dissecting SMTP Email Traffic with Wireshark"
 date: 2024-11-12
-categories: [Network Analysis, Protocol Study]
+categories: [Network Analysis, Digital Forensics]
 tags: [SMTP, Wireshark, Packet Capture, Email Forensics]
 description: Step-by-step analysis of SMTP communication captured in Wireshark, revealing timestamps, email client information, message content, and packet structure.
 ---
