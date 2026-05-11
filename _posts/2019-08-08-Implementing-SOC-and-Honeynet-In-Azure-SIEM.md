@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A Honeynet Wired to Azure Sentinel"
+title: "Setting Up a Honeynet in Azure Sentinel"
 date: 2023-06-01 08:00:00 +0000
 categories: [Security, Azure, SIEM]
 tags: [Azure Sentinel, Honeypot, Cyber Attacks, Threat Monitoring]

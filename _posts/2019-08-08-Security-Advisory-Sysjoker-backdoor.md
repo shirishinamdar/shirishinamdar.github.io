@@ -1,5 +1,5 @@
 ---
-title: "The Backdoor in launchd, systemd, and schtasks"
+title: "SysJoker: A Cross-Platform Backdoor Analysis"
 author: Shirish Inamdar
 date: 2021-12-07 00:34:00 +0800
 categories: [Security, Malware]

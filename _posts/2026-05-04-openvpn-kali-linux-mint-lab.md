@@ -1,9 +1,12 @@
 ---
-title: "Trust Across UDP 1194"
+title: "Building an OpenVPN Tunnel Between Kali and Linux Mint"
 date: 2026-05-04 01:30:39 -0400
 categories: [Networking, Offensive Security]
 tags: [OpenVPN, VPN, PKI, Kali Linux, Linux Mint, VMware, Networking, Lab]
 description: Step-by-step build of a working OpenVPN tunnel between two VMware VMs (Kali server, Linux Mint client), covering PKI setup, certificate generation, server.conf, client.ovpn, and end-to-end ping verification.
+image:
+  path: /assets/img/blog/openvpn-kali-linux-mint-lab/image1.jpeg
+  alt: "Linux Mint VM running in VMware as the OpenVPN client."
 ---
 ## Overview
 This week focused on setting up a working OpenVPN tunnel between two

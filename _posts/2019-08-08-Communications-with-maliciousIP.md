@@ -1,5 +1,5 @@
 ---
-title: "Hunting a Beacon Through the SIEM"
+title: "Investigating Outbound C2 Communications to a Malicious IP"
 author: [Shirish Inamdar]
 date: 2020-01-15 00:00:00 +0800
 categories: [Security, Incident Response]

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Triage, Contain, Eradicate"
+title: "Incident Response Playbook: From Alert to Eradication"
 date: 2022-06-01 08:00:00 +0000
 categories: [Security, Incident Response]
 tags: [SOP, Threat Investigation, Malware, APT, DDoS, Data Exfiltration, SIEM, SOAR]

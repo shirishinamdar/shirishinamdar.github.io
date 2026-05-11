@@ -285,8 +285,8 @@ def main() -> None:
     ap.add_argument("--categories", default=",".join(DEFAULT_CATEGORIES),
                     help='comma-separated, default: "Cybersecurity"')
     ap.add_argument("--tags", default="", help="comma-separated tags")
-    ap.add_argument("--cover", default="none",
-                    help='1-based image index for cover image; default "none" to match existing site style')
+    ap.add_argument("--cover", default="1",
+                    help='1-based image index for cover image (default 1); pass "none" to omit')
     ap.add_argument("--draft", action="store_true",
                     help="write to _drafts/<slug>.md instead of _posts/")
     ap.add_argument("--dry-run", action="store_true",

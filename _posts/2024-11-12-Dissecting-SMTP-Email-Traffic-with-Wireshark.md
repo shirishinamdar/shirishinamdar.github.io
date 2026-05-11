@@ -1,9 +1,12 @@
 ---
-title: "Port 25 in the Clear"
+title: "Analyzing SMTP Email Traffic with Wireshark"
 date: 2024-11-12
 categories: [Network Analysis, Digital Forensics]
 tags: [SMTP, Wireshark, Packet Capture, Email Forensics]
 description: Step-by-step analysis of SMTP communication captured in Wireshark, revealing timestamps, email client information, message content, and packet structure.
+image:
+  path: /assets/img/blog/smtp-wireshark/smtpsa.png
+  alt: "SMTP packet capture opened in Wireshark."
 ---
 
 ## Introduction

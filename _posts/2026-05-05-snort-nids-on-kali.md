@@ -1,9 +1,12 @@
 ---
-title: "When Snort Heard the Ping"
+title: "Snort NIDS Setup on Kali Linux"
 date: 2026-05-05 17:32:00 -0400
 categories: [Network Security, Detection Engineering]
 tags: [Snort, NIDS, Kali Linux, IDS, Detection, Lab]
 description: A hands-on Snort 2 lab on Kali Linux — putting an interface into promiscuous mode, writing a custom ICMP alert rule and a SYN-flood port-scan rule, and confirming detections fire end to end on a private virtual network.
+image:
+  path: /assets/img/blog/snort-nids-on-kali/image1.png
+  alt: "Confirming the network interface is in promiscuous mode for Snort."
 ---
 
 ## Introduction
