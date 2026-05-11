@@ -1,5 +1,5 @@
 ---
-title: Security Advisory - SysJoker Backdoor
+title: "The Backdoor in launchd, systemd, and schtasks"
 author: Shirish Inamdar
 date: 2021-12-07 00:34:00 +0800
 categories: [Security, Malware]

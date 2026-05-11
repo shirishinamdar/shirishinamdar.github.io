@@ -23,8 +23,8 @@ Verify: `pandoc --version` should print 2.x or 3.x.
 
 ## Weekly workflow
 
-1. Drop the week's `.docx` into `drafts-source/` at the repo root. Keep the source docs there — they're git-ignored from the published site, but a useful archive of what you actually wrote.
-2. From the repo root, run:
+1. Drop the week's `.docx` into `drafts-source/` at the repo root. Keep the source docs there — they're excluded from the published site, but a useful archive of what you actually wrote.
+2. To convert **one** doc, run from the repo root:
 
    ```powershell
    python tools\convert-docx\docx_to_chirpy.py drafts-source\my-topic.docx `
@@ -34,12 +34,35 @@ Verify: `pandoc --version` should print 2.x or 3.x.
        --tags "tag1,tag2,tag3"
    ```
 
+   To convert **all** the docs in a folder at once (batch mode):
+
+   ```powershell
+   python tools\convert-docx\docx_to_chirpy.py drafts-source
+   ```
+
+   In batch mode, each post's title and slug are auto-derived from the filename; you'll edit those in the post afterwards.
+
    Common flags:
 
    - `--draft` -> write to `_drafts/<slug>.md` instead of `_posts/`. Drafts don't publish until moved into `_posts/` with a date prefix.
    - `--dry-run` -> print the result to stdout, don't touch files. Use this first if you're unsure.
    - `--cover N` -> use the Nth image (1-based) as the cover. `--cover none` omits it.
-   - `--date YYYY-MM-DD` -> override the post date (defaults to today, IST).
+   - `--date YYYY-MM-DD` -> override the post date (defaults to today, ET).
+   - `--keep-trailer` -> disable the auto-strip of "Key Points / Future Work / Supervisor / Weekly Status" boilerplate (see below).
+
+### Auto-stripped boilerplate
+
+The script automatically removes any trailing section with one of these headings (case-insensitive, as either an `## H2` heading or a `**bold**` line):
+
+- `Key Points`
+- `Future Work`
+- `Weekly Status` / `Weekly Update` / `Weekly Report`
+- `Status Report` / `Status Update`
+- `Supervisor` (and `Updates for Supervisor / Manager / Team`)
+- `Action Items` / `Pending Items` / `To-do`
+- `Reporting To`
+
+This is meant for the status-report footers you include in your weekly docs. Everything from the first matching heading to the end of the document gets dropped. If a particular post legitimately uses one of these headings as real content, pass `--keep-trailer` to disable the stripping.
 
 3. Open the new file in `_posts/YYYY-MM-DD-<slug>.md`. **Edit it.** The script does mechanical conversion — it does not write your post. At minimum, every published post on this site should have:
    - a one-line **lab disclaimer** if it's offensive/lab content,

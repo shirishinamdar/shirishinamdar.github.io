@@ -1,5 +1,5 @@
 ---
-title: "Dissecting SMTP Email Traffic with Wireshark"
+title: "Port 25 in the Clear"
 date: 2024-11-12
 categories: [Network Analysis, Digital Forensics]
 tags: [SMTP, Wireshark, Packet Capture, Email Forensics]

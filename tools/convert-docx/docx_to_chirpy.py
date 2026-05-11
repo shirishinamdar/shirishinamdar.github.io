@@ -40,6 +40,26 @@ DEFAULT_TZ = timezone(timedelta(hours=-4))  # America/New_York EDT; switch to -5
 DEFAULT_CATEGORIES = ["Cybersecurity"]
 IMAGE_RE = re.compile(r"!\[([^\]]*)\]\(([^)]+)\)")
 
+# Trailer signals — section titles that mark the start of weekly status-report
+# boilerplate (supervisor updates, future work, action items, etc). Everything
+# from the first match to the end of the document is stripped. Override with
+# --keep-trailer if a particular post legitimately uses one of these headings.
+TRAILER_SIGNALS = [
+    r"key\s*points?",
+    r"future\s*work",
+    r"weekly\s*status",
+    r"weekly\s*update",
+    r"weekly\s*report",
+    r"status\s*report",
+    r"status\s*update",
+    r"supervisor",
+    r"action\s*items?",
+    r"pending\s*items?",
+    r"to[\s\-]?dos?",
+    r"updates?\s*for\s*(?:supervisor|manager|team)",
+    r"reporting\s*to",
+]
+
 
 # ---------------------------------------------------------------------------
 # helpers
@@ -127,6 +147,29 @@ def unindent_blockquoted_images(md: str) -> str:
     return re.sub(
         r"^>\s*(!\[[^\]]*\]\([^)]+\))\s*$", r"\1", md, flags=re.MULTILINE
     )
+
+
+def strip_trailer(md: str) -> tuple[str, str | None]:
+    """Drop trailing weekly-status boilerplate (Key Points, Future Work,
+    Supervisor Updates, etc). Returns (cleaned_md, stripped_text_or_None).
+    Cuts at the earliest heading or bold-only line whose label matches a
+    pattern in TRAILER_SIGNALS."""
+    sig = "|".join(TRAILER_SIGNALS)
+    patterns = [
+        rf"^#{{1,6}}\s+(?:{sig})\b[^\n]*$",           # ## Key Points
+        rf"^\*\*\s*(?:{sig})\b[^*\n]*\*\*[\s:]*$",     # **Key Points:**
+        rf"^(?:{sig})\b[^*\n]*\*\*[\s:]*$",            # Key Points:** (Word broke opening ** to prev line)
+        rf"^\*\*\s*(?:{sig})\b[^*\n]*$",               # **Key Points (closing ** dropped)
+    ]
+    earliest = None
+    for p in patterns:
+        m = re.search(p, md, flags=re.IGNORECASE | re.MULTILINE)
+        if m and (earliest is None or m.start() < earliest.start()):
+            earliest = m
+    if not earliest:
+        return md, None
+    cut = earliest.start()
+    return md[:cut].rstrip() + "\n", md[cut:].strip()
 
 
 def detect_title_from_body(md: str) -> str | None:
@@ -242,17 +285,38 @@ def main() -> None:
     ap.add_argument("--categories", default=",".join(DEFAULT_CATEGORIES),
                     help='comma-separated, default: "Cybersecurity"')
     ap.add_argument("--tags", default="", help="comma-separated tags")
-    ap.add_argument("--cover", default="1",
-                    help='1-based image index for cover (default 1); "none" to omit')
+    ap.add_argument("--cover", default="none",
+                    help='1-based image index for cover image; default "none" to match existing site style')
     ap.add_argument("--draft", action="store_true",
                     help="write to _drafts/<slug>.md instead of _posts/")
     ap.add_argument("--dry-run", action="store_true",
                     help="print result; do not write files")
+    ap.add_argument("--keep-trailer", action="store_true",
+                    help="do not auto-strip 'Key Points / Future Work / Supervisor' boilerplate")
     args = ap.parse_args()
 
-    if not args.docx.is_file():
-        sys.exit(f"error: not a file: {args.docx}")
+    # Batch mode: directory input -> process every .docx inside
+    if args.docx.is_dir():
+        docx_files = sorted(
+            p for p in args.docx.glob("*.docx") if not p.name.startswith("~$")
+        )
+        if not docx_files:
+            sys.exit(f"no .docx files found in {args.docx}")
+        if args.title or args.slug:
+            sys.exit("error: --title and --slug are not supported in batch mode "
+                     "(they'd apply to every doc). Run per-file for those.")
+        for d in docx_files:
+            print(f"\n--- {d.name} ---")
+            args.docx = d
+            convert_one(args)
+        return
 
+    if not args.docx.is_file():
+        sys.exit(f"error: not a file or directory: {args.docx}")
+    convert_one(args)
+
+
+def convert_one(args) -> None:
     pandoc = require_pandoc()
     repo = find_repo_root(args.docx if args.docx.is_absolute() else Path.cwd())
 
@@ -281,6 +345,13 @@ def main() -> None:
         md = unindent_blockquoted_images(md)
         md = split_inline_images(md)
         md = strip_leading_title_line(md, title)
+
+        # 4a. strip weekly-status boilerplate (Key Points / Future Work / Supervisor / etc)
+        if not args.keep_trailer:
+            md, dropped = strip_trailer(md)
+            if dropped:
+                preview = dropped.splitlines()[0][:80]
+                print(f"  stripped trailing section starting with: {preview}")
 
         dest_media = repo / "assets" / "img" / "blog" / slug
         md, images = rewrite_and_collect_images(md, slug, work, dest_media)

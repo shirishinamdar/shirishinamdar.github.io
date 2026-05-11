@@ -1,5 +1,5 @@
 ---
-title: Security Advisory - LockBit Ransomware
+title: "Inside a LockBit Intrusion"
 author: Shirish Inamdar
 date: 2021-08-30 00:00:00 +0800
 categories: [Security, Ransomware]

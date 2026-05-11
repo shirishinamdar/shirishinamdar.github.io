@@ -1,5 +1,5 @@
 ---
-title: "Ophcrack: Cracking Windows Passwords with Rainbow Tables"
+title: "Walking a Rainbow Against the SAM Hive"
 date: 2026-04-26 10:00:00 -0400
 categories: [Offensive Security, Password Attacks]
 tags: [Ophcrack, Rainbow Tables, Windows, NTLM, SAM, Password Cracking, Lab]

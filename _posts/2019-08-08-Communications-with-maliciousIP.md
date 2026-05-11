@@ -1,5 +1,5 @@
 ---
-title: Process for Handling Outbound Communication with Malicious IP/URL
+title: "Hunting a Beacon Through the SIEM"
 author: [Shirish Inamdar]
 date: 2020-01-15 00:00:00 +0800
 categories: [Security, Incident Response]
