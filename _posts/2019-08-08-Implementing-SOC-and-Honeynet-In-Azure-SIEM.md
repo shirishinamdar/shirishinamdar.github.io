@@ -6,6 +6,9 @@ categories: [Security, Azure, SIEM]
 tags: [Azure Sentinel, Honeypot, Cyber Attacks, Threat Monitoring]
 author: "Shirish Inamdar"
 
+image:
+  path: /assets/img/blog/implementing-soc-and-honeynet-in-azure-siem/cover.svg
+  alt: "AZURE HONEYNET — Wired to Azure Sentinel"
 ---
 ![Diagram](https://miro.medium.com/v2/resize:fit:828/format:webp/0*jz0J7MsU_MFhrhWJ.gif)
 

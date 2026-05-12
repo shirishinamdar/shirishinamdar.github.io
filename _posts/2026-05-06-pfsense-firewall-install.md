@@ -5,8 +5,8 @@ categories: [Network Security, Firewalls]
 tags: [pfSense, Firewall, Perimeter, FreeBSD, Network Security, VMware, Lab]
 description: Installing pfSense as a virtual firewall in VMware, wiring it between a NAT WAN interface and a host-only LAN, and reaching the management console from an Ubuntu client at 192.168.150.1.
 image:
-  path: /assets/img/blog/pfsense-firewall-install/image1.png
-  alt: "Downloading the pfSense Community Edition ISO."
+  path: /assets/img/blog/pfsense-firewall-install/cover.svg
+  alt: "pfSENSE — Perimeter Firewall on VMware"
 ---
 
 ## Introduction

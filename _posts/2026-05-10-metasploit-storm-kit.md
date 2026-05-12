@@ -5,8 +5,8 @@ categories: [Offensive Security]
 tags: [Metasploit, STORM Kit, Raspberry Pi, Offensive Security, Lab]
 description: Unboxing the EC-Council STORM kit (a Raspberry Pi-based mobile pentest platform), then running the first Metasploit framework lab from a Kali VM against an intentionally vulnerable target.
 image:
-  path: /assets/img/blog/metasploit-storm-kit/image1.jpg
-  alt: Hands-On with Metasploit and the EC-Council STORM Kit
+  path: /assets/img/blog/metasploit-storm-kit/cover.svg
+  alt: "METASPLOIT — msfconsole + EC-Council STORM Kit"
 ---
 
 # Overview

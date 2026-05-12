@@ -5,8 +5,8 @@ categories: [Web, System Administration]
 tags: [Apache, VirtualHost, Ubuntu, Web Server, Lab]
 description: Installing Apache HTTP Server on Ubuntu, creating a custom site directory, writing a basic HTML page, and configuring a VirtualHost to route a domain to the new site.
 image:
-  path: /assets/img/blog/apache-virtualhost-ubuntu/image1.png
-  alt: Apache HTTP Server with VirtualHost on Ubuntu
+  path: /assets/img/blog/apache-virtualhost-ubuntu/cover.svg
+  alt: "APACHE — VirtualHost on Ubuntu"
 ---
 
 # Overview

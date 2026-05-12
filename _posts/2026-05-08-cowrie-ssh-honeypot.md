@@ -5,8 +5,8 @@ categories: [Deception, Honeypots]
 tags: [Cowrie, SSH Honeypot, Docker, Deception, Lab]
 description: Standing up Cowrie — a medium-interaction SSH and Telnet honeypot — in a Docker container on Kali, mapping port 2222 to capture brute-force attempts, and reading the resulting session logs.
 image:
-  path: /assets/img/blog/cowrie-ssh-honeypot/image1.png
-  alt: Cowrie SSH Honeypot Setup with Docker
+  path: /assets/img/blog/cowrie-ssh-honeypot/cover.svg
+  alt: "COWRIE — SSH Honeypot in Docker"
 ---
 
 Cowrie , a medium-interaction SSH and Telnet honeypot designed to log

@@ -5,8 +5,8 @@ categories: [Network Security, Firewalls]
 tags: [UFW, Firewall, Ubuntu, iptables, Lab]
 description: Configuring UFW (Uncomplicated Firewall) on Ubuntu as a host-based filter — default-deny policies, allow rules per service, status verification, and the iptables relationship.
 image:
-  path: /assets/img/blog/ufw-firewall-ubuntu/image1.png
-  alt: UFW Host-Based Firewall on Ubuntu
+  path: /assets/img/blog/ufw-firewall-ubuntu/cover.svg
+  alt: "UFW — Host-Based Firewall on Ubuntu"
 ---
 
 # Overview  

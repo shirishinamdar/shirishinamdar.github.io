@@ -5,8 +5,8 @@ categories: [SIEM, Log Management]
 tags: [Graylog, SIEM, Debian, Log Management, Lab]
 description: Installing Graylog 7.0 on Debian 12 — MongoDB, Graylog Data Node, secrets generation, web interface — to build a centralized log management and SIEM environment from scratch.
 image:
-  path: /assets/img/blog/graylog-siem-debian/image1.jpg
-  alt: Graylog SIEM Setup on Debian 12
+  path: /assets/img/blog/graylog-siem-debian/cover.svg
+  alt: "GRAYLOG — SIEM on Debian 12"
 ---
 
 # Overview
