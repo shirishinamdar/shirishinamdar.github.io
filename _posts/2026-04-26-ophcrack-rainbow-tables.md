@@ -5,8 +5,8 @@ categories: [Offensive Security, Password Attacks]
 tags: [Ophcrack, Rainbow Tables, Windows, NTLM, SAM, Password Cracking, Lab]
 description: A walkthrough of recovering a local Windows XP user password using Ophcrack and rainbow tables, with technical context on LM/NTLM hashes, SAM extraction, and why the attack fails on modern Windows.
 image:
-  path: /assets/img/blog/ophcrack-rainbow-tables/cover.svg
-  alt: "OPHCRACK — Rainbow Tables vs. the SAM Hive"
+  path: /assets/img/blog/ophcrack-rainbow-tables/image1.jpeg
+  alt: "Creating the test user account in Windows XP for the Ophcrack lab."
 ---
 
 ## Introduction

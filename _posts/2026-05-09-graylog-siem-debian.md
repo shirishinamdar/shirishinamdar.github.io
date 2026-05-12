@@ -1,224 +1,251 @@
 ---
-title: Graylog SIEM Setup on Debian 12
+title: "Graylog SIEM Setup on Debian 12"
 date: 2026-05-09 18:54:00 -0400
 categories: [SIEM, Log Management]
-tags: [Graylog, SIEM, Debian, Log Management, Lab]
-description: Installing Graylog 7.0 on Debian 12 — MongoDB, Graylog Data Node, secrets generation, web interface — to build a centralized log management and SIEM environment from scratch.
+tags: [Graylog, SIEM, Debian, MongoDB, Log Management, OpenSearch, Lab]
+description: Building a Graylog 7.0 SIEM from scratch on Debian 12 — MongoDB 8.0 for metadata, the Graylog Data Node (OpenSearch) for log storage, password secret and admin hash generation, service start, and first login through the preflight wizard.
 image:
-  path: /assets/img/blog/graylog-siem-debian/cover.svg
-  alt: "GRAYLOG — SIEM on Debian 12"
+  path: /assets/img/blog/graylog-siem-debian/image1.jpg
+  alt: "Debian 12.13 system after apt update and installing Graylog prerequisites."
 ---
 
-# Overview
+## Introduction
 
-This week's work focused on three main tasks:
+This walkthrough documents building a **Graylog 7.0** centralized log management and SIEM environment on a fresh Debian 12 virtual machine. The build covers each component in the stack: MongoDB 8.0 for configuration metadata, the Graylog Data Node (which bundles OpenSearch) for log storage and indexing, the Graylog Server for processing and the web UI, plus the secret and password material that ties them together securely. The objective was to understand how the pieces actually fit together rather than treating Graylog as a single opaque appliance.
 
-  - This week focused on installing and configuring Graylog 7.0 on a
-    Debian 12 virtual machine as part of building a centralized log
-    management and SIEM environment.
+---
 
-  - Graylog was set up with MongoDB 8.0, a Graylog Data Node, and the
-    Graylog Server, including secrets generation, service configuration,
-    and web interface access.
+## Background: What Graylog Is
 
-  - Started Inclass hands on labs for pfsense firewall ITN 263
+Graylog is a log management and analysis platform. It ingests structured and unstructured log data from servers, network devices, firewalls, applications, IDS/IPS sensors, and cloud services; indexes the data; and presents a unified search, alerting, and dashboarding surface for analysts. It sits in the same space as Splunk and the Elastic-based ELK / Wazuh stacks, with a deliberately narrower default install footprint.
 
-# Graylog Installation on Debian 12  
+The architecture has four components that have to be installed and configured together:
 
-## What is Graylog?
+| Component | Role |
+| --- | --- |
+| **Graylog Server** | The brain. Processes incoming logs, runs searches, evaluates alert rules, serves the web UI. |
+| **MongoDB** | Stores configuration and metadata (users, streams, dashboards, alert definitions). Does **not** store log messages. |
+| **Graylog Data Node** (OpenSearch) | Stores the actual log messages and provides the search index. In Graylog 7.0, this is bundled as a managed Data Node. |
+| **Web Interface** | The browser-facing UI for searching, visualizing, and managing the platform. |
 
-Graylog is a log management and analysis platform. It collects, indexes,
-and analyzes log data from various sources (servers, network devices,
-applications) and presents it in a centralized, searchable interface.
-Think of it as a smarter, easier-to-use ELK (Elasticsearch, Logstash,
-Kibana) stack alternative.
+A SIEM is only as useful as the sources feeding it. The install below stands up the platform itself; subsequent posts in this lab series cover wiring upstream sources (Snort alerts, UFW deny logs, Cowrie session JSON, Tripwire integrity reports) into it for correlation.
 
-## Core Components
+---
 
-Graylog Server - The brain. Processes logs, handles searches,
-dashboards, alerts.
+## Lab Setup
 
-MongoDB - Stores metadata and configuration (not the logs themselves).
+| Item | Detail |
+| --- | --- |
+| Host OS | Debian 12.13 (Bookworm) |
+| Graylog version | 7.0 (Open) |
+| MongoDB version | 8.0 |
+| Data Node | Bundled OpenSearch (managed by Graylog Data Node service) |
+| Server RAM | 4 GB minimum, 8 GB recommended for the data node + server |
+| Web UI bind | `0.0.0.0:9000` (LAN-reachable for this lab) |
 
-Elasticsearch - Stores actual log messages, enables fast search.
+A 4 GB VM will complete the install but will struggle once real log ingest starts. The OpenSearch heap is sized at 2 GB and the Graylog server JVM at 2 GB in the configuration below, which is workable for a single-host lab and undersized for anything resembling production volume.
 
-Graylog Web Interface - UI for searching, visualizing, and alerting on
-logs.
+---
 
-##   
-Step 1 - System Prerequisites
+## 1. System Prerequisites
 
-Updated the system and installed required packages on **Debian 12.13**.
-
+```bash
 sudo apt update && sudo apt upgrade -y
-
 sudo apt install -y curl gnupg wget apt-transport-https
+```
 
-![](/assets/img/blog/graylog-siem-debian/image1.jpg)
+The four prerequisite packages let the system add a third-party repository over HTTPS, verify its signing key, and download release artifacts.
 
-*Figure 1 -- Debian 12.13 system after running apt update/upgrade and
-installing prerequisites.*
+![Debian 12.13 after apt update/upgrade with prerequisites installed.](/assets/img/blog/graylog-siem-debian/image1.jpg)
 
-## Step 2 - Install MongoDB 8.0
+---
 
-Added the MongoDB 8.0 APT repository, installed mongodb-org, and enabled
-the mongod service.
+## 2. Installing MongoDB 8.0
 
+MongoDB is not in the Debian default repositories. The MongoDB project's APT repository is added with its signing key, then the `mongodb-org` meta-package is installed:
+
+```bash
 curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | \
+  sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
 
-sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
-
-echo "deb \[signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg\] \
-
-https://repo.mongodb.org/apt/debian bookworm/mongodb-org/8.0 main" | \
-
-sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+echo "deb [signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg] \
+  https://repo.mongodb.org/apt/debian bookworm/mongodb-org/8.0 main" | \
+  sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
 
 sudo apt update
-
 sudo apt install -y mongodb-org
-
 sudo systemctl enable --now mongod
-
 sudo systemctl status mongod
+```
 
-![](/assets/img/blog/graylog-siem-debian/image2.jpg)
+The `mongod` service should report `active (running)` after the final command:
 
-*Figure 2 -- mongod service running and enabled after MongoDB 8.0
-installation.*
+![mongod running and enabled after MongoDB 8.0 install.](/assets/img/blog/graylog-siem-debian/image2.jpg)
 
-## Step 3 - Set vm.max_map_count
+---
 
-Set vm.max_map_count=262144 in sysctl -- required by the Graylog Data
-Node (OpenSearch).
+## 3. Tuning the Kernel for OpenSearch
 
-echo 'vm.max_map_count=262144' | sudo tee -a
-/etc/sysctl.d/99-graylog-datanode.conf
+The Graylog Data Node wraps OpenSearch, which requires a larger `vm.max_map_count` than Debian's default. Without this setting, OpenSearch fails to start at memory-map allocation time:
+
+```bash
+echo 'vm.max_map_count=262144' | \
+  sudo tee -a /etc/sysctl.d/99-graylog-datanode.conf
 
 sudo sysctl --system
+```
 
-![](/assets/img/blog/graylog-siem-debian/image3.jpg)
+![sysctl applied — vm.max_map_count set to 262144.](/assets/img/blog/graylog-siem-debian/image3.jpg)
 
-*Figure 3 -- sysctl configuration applied for vm.max_map_count.*
+This change persists across reboots because it lives in `/etc/sysctl.d/`.
 
-## Step 4 - Add Graylog Repo & Install Data Node + Server
+---
 
-Downloaded and installed the Graylog 7.0 repository package, then
-installed graylog-datanode and graylog-server.
+## 4. Adding the Graylog Repository and Installing Packages
 
-wget
-https://packages.graylog2.org/repo/packages/graylog-7.0-repository_latest.deb
+Graylog publishes a repository helper as a `.deb` package. Installing it adds the apt source plus the project's signing key in one step:
 
+```bash
+wget https://packages.graylog2.org/repo/packages/graylog-7.0-repository_latest.deb
 sudo dpkg -i graylog-7.0-repository_latest.deb
-
 sudo apt update
-
 sudo apt install -y graylog-datanode graylog-server
+```
 
-![](/assets/img/blog/graylog-siem-debian/image4.jpg)
+Both packages are installed but **not yet started** — they need configuration first.
 
-*Figure 4 -- Graylog Data Node and Server packages being installed from
-the Graylog 7.0 repository.*
+![graylog-datanode and graylog-server packages installed.](/assets/img/blog/graylog-siem-debian/image4.jpg)
 
-## Step 5 - Generate Secrets
+---
 
-Generated a 96-byte base64 password secret and a SHA256 hash of the
-admin password (student@NOVA).
+## 5. Generating Secrets
 
-# Password secret (used in both datanode.conf and server.conf)
+Graylog needs two secrets to start: a **password secret** (used to encrypt and salt stored credentials) and an **admin password hash** (the root web-UI login).
 
-openssl rand -base64 96 | tr -d '\\n'
+```bash
+# 96-byte random base64 string — used in BOTH datanode.conf and server.conf
+openssl rand -base64 96 | tr -d '\n'
 
-#echo -n "student@NOVA" | sha256sum | awk '{print $1}'
+# SHA256 of the chosen admin password
+echo -n "ChooseAStrongAdminPasswordHere" | sha256sum | awk '{print $1}'
+```
 
-![](/assets/img/blog/graylog-siem-debian/image5.jpg)
+The first command outputs a long base64 string. The second outputs a 64-character hex SHA-256 hash. Both get pasted into the config files in the next steps.
 
-*Figure 5 -- OpenSSL-generated password secret and SHA256 admin password
-hash output.*
+![Generated password secret and admin password hash.](/assets/img/blog/graylog-siem-debian/image5.jpg)
 
-## Step 6 - Configure Data Node
+The admin password used during the lab was a placeholder; in any real deployment the chosen password should be long, randomly generated, and stored in a password manager. The SHA-256 here is **not** what protects the password — Graylog uses the password secret as additional material — but the same hygiene rules apply.
 
-Edited datanode.conf to set the password secret and OpenSearch heap
-size.
+---
 
+## 6. Configuring the Data Node
+
+```bash
 sudo nano /etc/graylog/datanode/datanode.conf
+```
 
-# Set:
+The two values to set:
 
-password_secret = <output from openssl above>
+```
+password_secret = <paste the openssl base64 output here>
+opensearch_heap = 2g
+```
 
-opensearch_heap=2g
+`opensearch_heap` is the Java heap for the embedded OpenSearch process. The standard rule of thumb is 50% of available RAM, capped at 31 GB, but for a lab VM 2 GB is plenty.
 
-## Step 7 - Configure Graylog Server
+---
 
-Edited server.conf to set the password secret, admin password hash, and
-bind address.
+## 7. Configuring the Graylog Server
 
+```bash
 sudo nano /etc/graylog/server/server.conf
+```
 
-# Set:
+The three critical lines:
 
-password_secret = <same openssl output as above>
+```
+password_secret      = <same openssl base64 output as datanode.conf>
+root_password_sha2   = <the sha256 hex from step 5>
+http_bind_address    = 0.0.0.0:9000
+```
 
-root_password_sha2 = <sha256 hash from Step 5>
+`http_bind_address = 0.0.0.0:9000` makes the UI reachable from any interface — fine for a lab. In production this should be bound to a specific internal interface, and a reverse proxy with TLS termination should sit in front.
 
-http_bind_address = 0.0.0.0:9000
+At the bottom of the file, the JVM options for the server itself:
 
-# Add at bottom:
+```
+GRAYLOG_SERVER_JAVA_OPTS="-Xms2g -Xmx2g -server -XX:+UseG1GC -XX:-OmitStackTraceInFastThrow"
+```
 
-GRAYLOG_SERVER_JAVA_OPTS="-Xms2g -Xmx2g -server -XX:+UseG1GC
--XX:-OmitStackTraceInFastThrow"
+`-Xms2g -Xmx2g` pins the Graylog Server heap at 2 GB. Pinning min and max equal avoids GC pauses caused by heap resizing.
 
-![](/assets/img/blog/graylog-siem-debian/image6.jpg)
+![server.conf configured with password_secret, root_password_sha2, and http_bind_address.](/assets/img/blog/graylog-siem-debian/image6.jpg)
 
-*Figure 6 -- server.conf configured with password_secret,
-root_password_sha2, and http_bind_address.*
+---
 
-## Step 8 - Start Services
+## 8. Starting the Services
 
-Enabled and started both the Graylog Data Node and Server using
-systemctl.
-
+```bash
 sudo systemctl enable --now graylog-datanode
-
 sudo systemctl enable --now graylog-server
+```
 
-![](/assets/img/blog/graylog-siem-debian/image7.jpg)
+The Data Node has to come up before the Server can connect to it; systemd dependency ordering handles this in the right sequence on most installs. Both should report `active (running)` within 30–60 seconds:
 
-*Figure 7 -- Graylog Data Node and Server services enabled and started
-via systemctl.*
+![Both Graylog services enabled and active.](/assets/img/blog/graylog-siem-debian/image7.jpg)
 
-## Step 9 - Preflight Setup & Web Interface Access
+---
 
-Retrieved the one-time preflight password from the server log and
-completed the setup wizard in the browser at
-http://192.168.131.128:9000.
+## 9. First-Time Setup Through the Preflight Wizard
 
+Graylog 7.0 introduces a **preflight setup wizard** that handles initial CA generation and Data Node certificate enrollment in the browser. The one-time password to enter the wizard is printed to the server log on first start:
+
+```bash
 sudo grep -i "preflight" /var/log/graylog-server/server.log | tail -5
+```
 
-# Then access in browser:
+A line like `Preflight password: <password>` will appear. That password is then used in the browser at:
 
-http://admin:RofhxejRFp@192.168.131.128:9000
+```
+http://<server-ip>:9000
+```
 
-# Monitor logs:
+The wizard walks through CA creation, Data Node certificate enrollment, and admin account confirmation.
 
-sudo tail -50 /var/log/graylog-server/server.log
+![Graylog preflight wizard in the browser.](/assets/img/blog/graylog-siem-debian/image8.jpg)
 
-![](/assets/img/blog/graylog-siem-debian/image8.jpg)
+For ongoing log monitoring of the server itself:
 
-*Figure 8 -- Graylog preflight wizard in the browser for initial CA and
-Data Node setup.*
+```bash
+sudo tail -f /var/log/graylog-server/server.log
+```
 
-![](/assets/img/blog/graylog-siem-debian/image9.jpg)
+---
 
-*Figure 9 -- Graylog server log showing service startup and preflight
-mode.*
+## 10. Logging In and the First View
 
-![](/assets/img/blog/graylog-siem-debian/image10.jpg)
+Once the preflight wizard finishes, the server transitions to the standard Graylog UI. The admin login uses the password whose SHA-256 was placed in `root_password_sha2` during step 5.
 
-*Figure 10 -- Server log confirming Data Node provisioning progress.*
+![Graylog web UI after first login.](/assets/img/blog/graylog-siem-debian/image9.jpg)
 
-![](/assets/img/blog/graylog-siem-debian/image11.jpg)
+The initial view is intentionally empty — there are no streams, no inputs, and no data. The next step in any real deployment is to open **System → Inputs**, add a GELF UDP or Syslog TCP/UDP input on a chosen port, and start pointing log sources at it.
 
-*Figure 11 -- Graylog web interface fully loaded and ready for log
-ingestion and dashboard creation.*
+![Graylog Inputs page — adding the first log input.](/assets/img/blog/graylog-siem-debian/image10.jpg)
+
+![Graylog overview dashboard after Data Node and Server are healthy.](/assets/img/blog/graylog-siem-debian/image11.jpg)
+
+---
+
+## Key Observations
+
+- **MongoDB stores configuration; OpenSearch (Data Node) stores logs.** Confusing these two is the most common source of "where did my data go?" questions in Graylog.
+- **The password secret is the single most sensitive value in the install.** Anything encrypted at rest in Graylog is keyed off it. It must match across `datanode.conf` and `server.conf`, and it should never be rotated without re-encrypting stored secrets.
+- **`vm.max_map_count` is a one-line fix that produces a confusing failure when forgotten.** OpenSearch dies during startup with an obscure mmap allocation error. The sysctl change is the standard workaround on every Linux distribution.
+- **The Graylog 7.0 preflight wizard replaces the old manual Elasticsearch + Mongo wiring.** This is a real ergonomic improvement; earlier versions required reading a half-dozen config files to bootstrap.
+- **A SIEM with no inputs is decoration.** The install above is the *platform*. The real work — defining inputs, parsing pipelines, stream rules, alerts, and dashboards — starts after the first login. The next steps for this lab are wiring Snort alerts, UFW deny logs, and Cowrie session JSON into Graylog inputs and building cross-source dashboards.
+
+---
+
+## Where This Sits in the Stack
+
+The earlier posts in this lab series each produced one source of telemetry: pfSense logs, UFW logs, Snort alerts, Tripwire integrity reports, Cowrie session data. Each one individually is useful but isolated. Graylog is what unifies them. The next post will cover plumbing those sources into Graylog inputs, defining the parsing rules that turn raw text lines into searchable fields, and writing the first alert that fires across multiple sources — for example, "Snort saw a port scan from this IP **and** UFW dropped traffic from the same IP in the same five-minute window."

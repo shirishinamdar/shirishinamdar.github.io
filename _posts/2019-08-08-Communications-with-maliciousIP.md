@@ -4,9 +4,6 @@ author: [Shirish Inamdar]
 date: 2020-01-15 00:00:00 +0800
 categories: [Security, Incident Response]
 tags: [Malicious IP, Malicious URL, Outbound Communication]
-image:
-  path: /assets/img/blog/communications-with-maliciousip/cover.svg
-  alt: "C2 HUNT — Outbound Beacon Investigation"
 ---
 
 

@@ -4,9 +4,6 @@ author: Shirish Inamdar
 date: 2021-08-30 00:00:00 +0800
 categories: [Security, Ransomware]
 tags: [LockBit, ransomware, security advisory]
-image:
-  path: /assets/img/blog/security-advisory-lockbit-ransomware/cover.svg
-  alt: "LOCKBIT — Ransomware Attack Analysis"
 ---
 
 ![LockBit Ransomware](https://digitalrecovery.com/wp-content/uploads/2024/02/Lockbit.webp)

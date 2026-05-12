@@ -4,9 +4,6 @@ author: Shirish Inamdar
 date: 2021-12-07 00:34:00 +0800
 categories: [Security, Malware]
 tags: [SysJoker, malware, security advisory]
-image:
-  path: /assets/img/blog/security-advisory-sysjoker-backdoor/cover.svg
-  alt: "SYSJOKER — Cross-Platform Backdoor"
 ---
 
 ![SysJoker Malware](https://research.checkpoint.com/wp-content/uploads/2023/11/banner13432-1024x505.png)

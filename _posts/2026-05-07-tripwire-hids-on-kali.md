@@ -5,8 +5,8 @@ categories: [Endpoint Security, Detection Engineering]
 tags: [Tripwire, HIDS, File Integrity, Kali Linux, Detection, Lab]
 description: Installing Tripwire on Kali Linux, generating site and local cryptographic keys, building a signed policy and integrity database, and confirming that an unauthorized change to /etc/passwd is detected on the next scan while an out-of-scope change in /tmp is not.
 image:
-  path: /assets/img/blog/tripwire-hids-on-kali/cover.svg
-  alt: "TRIPWIRE — File Integrity Monitoring · HIDS"
+  path: /assets/img/blog/tripwire-hids-on-kali/image1.png
+  alt: "Tripwire install — initial passphrase prompts."
 ---
 
 ## Introduction
