@@ -9,9 +9,9 @@ image:
   alt: "Tripwire install — initial passphrase prompts."
 ---
 
-## Introduction
+Host-based intrusion detection is the quiet sibling of network IDS — less flashy, no real-time traffic to watch, but critical for catching the patient attacker who's already past your network defenses. Tripwire is the original tool in this space. It hashes every file you care about, signs the snapshot with a key only you have, and tells you the next morning what changed.
 
-This walkthrough documents the installation and first integrity check of **Tripwire**, an open-source host-based intrusion detection system (HIDS) for Linux. The exercise was performed on a Kali Linux virtual machine. The objective was to understand how a file integrity monitor builds a baseline snapshot of a filesystem, how that baseline is protected from the same attacker the tool is meant to catch, and how the daily check loop distinguishes monitored paths from unmonitored ones.
+Here's my walkthrough of installing Tripwire on Kali Linux, building the signed baseline, and verifying that an unauthorized change to `/etc/passwd` actually gets caught — while an identical change to a file outside the policy stays invisible, exactly as designed.
 
 ---
 

@@ -9,9 +9,9 @@ image:
   alt: "Downloading the pfSense Community Edition ISO."
 ---
 
-## Introduction
+If you've never set up a perimeter firewall by hand, the concept stays abstract for a long time — "it filters traffic" — until you build one and watch packets stop at the boundary in real time. pfSense is the cleanest way I've found to get that hands-on experience without spending money: a free, FreeBSD-based firewall distribution that runs happily in a VMware VM with two virtual NICs and a few gigs of RAM.
 
-This walkthrough documents the installation and initial configuration of **pfSense**, an open-source firewall and router distribution built on FreeBSD. The exercise was performed in VMware Workstation with two virtual network adapters — a NAT adapter standing in for the WAN side, and a host-only adapter standing in for a private LAN segment. A separate Ubuntu virtual machine on the same host-only network acted as the protected client. The objective was to understand how a perimeter firewall sits between two networks, how its interfaces are assigned during install, and how to reach its web management console from inside the protected segment.
+This post is the walkthrough of installing pfSense in VMware, wiring up its two network interfaces (one as the WAN, one as the LAN), and reaching the web management console from a protected Ubuntu client on the inside.
 
 ---
 

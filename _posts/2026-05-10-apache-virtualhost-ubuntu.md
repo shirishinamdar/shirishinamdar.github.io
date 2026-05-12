@@ -9,9 +9,9 @@ image:
   alt: "Default Apache welcome page after installation on Ubuntu."
 ---
 
-## Introduction
+Two websites on one server, on one IP, on one port. The mechanism — name-based virtual hosting — has been quietly powering most of the web since the late 1990s, and Apache implements it in maybe twenty lines of configuration.
 
-This walkthrough documents installing the **Apache HTTP Server** on Ubuntu, creating a custom website directory and a basic HTML page, then configuring a **name-based VirtualHost** so the same server can serve multiple sites under different domain names. The objective was to understand how Apache routes an incoming HTTP request from the wire to the correct document root, and what each of the three core directives in a VirtualHost actually controls.
+Here's my walkthrough of getting Apache up and running on Ubuntu, serving a custom HTML page from `/var/www/gci/`, and configuring a VirtualHost so requests for a specific hostname land on the new site while everything else falls through to the default Apache page.
 
 ---
 
@@ -136,60 +136,4 @@ Per-site `ErrorLog` and `CustomLog` directives are not strictly required — wit
 
 ```bash
 sudo a2ensite gci.conf
-sudo systemctl reload apache2
-```
-
-`a2ensite` creates a symlink in `/etc/apache2/sites-enabled/` pointing at the file in `sites-available/`. The reload tells Apache to re-read its configuration without dropping in-flight connections.
-
-The two companion commands are worth knowing too:
-
-```bash
-sudo a2dissite gci.conf       # remove the symlink — site disabled
-sudo apache2ctl configtest    # syntax check before reload
-```
-
-`configtest` should be run before every reload in production. A bad VirtualHost file can prevent Apache from starting at all, taking *every* site on the server down with it.
-
----
-
-## 5. Faking DNS Locally
-
-In production the hostname would resolve through a real DNS record. For a local lab, the same effect is achieved by editing `/etc/hosts` on the client:
-
-```bash
-sudo nano /etc/hosts
-```
-
-Append a line mapping the test hostname to the server's IP (for the lab, the same VM, so 127.0.0.1 or its LAN address):
-
-```
-192.168.150.50    gci.example.local
-```
-
-From this point, any request to `gci.example.local` from this machine resolves to the lab server, sends an HTTP request with the correct `Host` header, and triggers the new VirtualHost.
-
----
-
-## 6. Verifying the VirtualHost Is Routing
-
-Browsing to `http://gci.example.local/` should now load the custom `index.html`, not the default Apache welcome page:
-
-![Custom HTML page served at gci.example.local after VirtualHost activation.](/assets/img/blog/apache-virtualhost-ubuntu/image5.png)
-
-A second check is to request the bare IP, which should still hit the default site (because no VirtualHost claims that hostname). The split confirms the routing decision is happening on the `Host` header, not on the IP or port.
-
----
-
-## Key Observations
-
-- **The `Host` header does the routing.** A request to the same IP, same port can reach completely different document roots depending on which hostname the client sent. Spoof the `Host` header (`curl -H 'Host: gci.example.local' http://<ip>/`) and Apache will believe you.
-- **The `000-default.conf` file is special.** It catches any request whose `Host` value doesn't match any defined VirtualHost. In a multi-tenant setup it's worth deciding deliberately what that file serves — a stub page, a 404, or a redirect.
-- **`a2ensite` is just a symlink helper.** It does not parse the config. If `gci.conf` has a typo, `a2ensite` will happily enable it and the next `reload` will fail. Always `apache2ctl configtest` first.
-- **Per-site logs are worth the extra two lines.** Combined logs across many VirtualHosts turn debugging into needle-in-haystack work. Separated logs are trivial to grep.
-- **TLS is the next step.** Everything above runs on plaintext HTTP. A production VirtualHost needs a second block listening on `*:443`, with `SSLEngine on`, a certificate from Let's Encrypt or an internal CA, and an HTTP→HTTPS redirect at the top of the port 80 block.
-
----
-
-## Where This Sits in the Stack
-
-Apache is the application-layer service the rest of this lab series defends. The earlier posts in the series cover the layers in front of it: **pfSense** at the network perimeter, **UFW** at the host filter, **Snort** as the passive sensor watching the traffic that does get through. A misconfigured Apache exposes the host regardless of how well those upstream layers are tuned, so getting `ServerName`, `DocumentRoot`, and TLS right is the application-layer equivalent of "default deny" at the network layer.
+sudo systemctl reload apach

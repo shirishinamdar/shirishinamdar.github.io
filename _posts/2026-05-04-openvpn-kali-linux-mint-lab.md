@@ -8,16 +8,11 @@ image:
   path: /assets/img/blog/openvpn-kali-linux-mint-lab/image1.jpeg
   alt: "Linux Mint VM running in VMware as the OpenVPN client."
 ---
-## Overview
-This week focused on setting up a working OpenVPN tunnel between two
-Linux VMs in VMware - Kali Linux as the server and Linux Mint as the
-client, both running on a NAT network. The lab covered PKI setup,
-certificate generation, server and client configuration, file transfer,
-and verifying the encrypted tunnel with a ping test.
+Encrypted tunnels are easy to take for granted until you build one from scratch. The phrase "VPN" hides a small mountain of PKI plumbing — certificate authorities, server certs, client certs, DH parameters, TLS auth keys — and every one of those pieces has to be generated, distributed, and trusted before a single packet ever flows.
 
-OpenVPN is an open-source tool that creates a secure, encrypted tunnel
-between two machines over a network. A VPN tunnel means all traffic
-between the two machines is encrypted
+This post is my walkthrough of building one from nothing: OpenVPN between two Linux VMs in my home lab — Kali Linux as the server, Linux Mint as the client — wiring up Easy-RSA, writing the server and client configs by hand, and watching the first ping go through the tunnel.
+
+---
 
 ## OpenVPN Lab - Kali (Server) + Linux Mint (client)
 ## Environment - VMware NAT

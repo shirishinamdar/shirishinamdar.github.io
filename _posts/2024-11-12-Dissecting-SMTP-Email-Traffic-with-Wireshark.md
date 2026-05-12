@@ -9,13 +9,9 @@ image:
   alt: "SMTP packet capture opened in Wireshark."
 ---
 
-## Introduction
+Most of the early internet's protocols were designed in an era when the word "encrypted" was a research curiosity. SMTP is one of them. The Simple Mail Transfer Protocol still moves a huge fraction of the world's email — and unless STARTTLS or SMTPS is added on top, every command and every byte of the message body travels the wire in plain text.
 
-This analysis provides a detailed examination of an SMTP packet capture (`SMTP.pcap`), identifying timestamps, client software, email content, and related network parameters.  
-**Wireshark** was used to decode and interpret each packet to understand how an email transaction unfolds over the Simple Mail Transfer Protocol (SMTP).
-
-You can follow along by downloading the same capture:  
-🔗 [SMTP.pcap — Wireshark Sample Capture](https://wiki.wireshark.org/uploads/__moin_import__/attachments/SampleCaptures/smtp.pcap)
+This post is my walkthrough of opening a sample SMTP capture in Wireshark and reading the whole conversation back: when the email was sent, what client wrote it, what the message body said, and the network parameters that connect the sender to the recipient's mail server. You can follow along with the same capture from the [Wireshark sample captures wiki](https://wiki.wireshark.org/uploads/__moin_import__/attachments/SampleCaptures/smtp.pcap).
 
 ---
 

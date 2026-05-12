@@ -9,9 +9,9 @@ image:
   alt: "Confirming the network interface is in promiscuous mode for Snort."
 ---
 
-## Introduction
+Every network intrusion-detection system rests on the same idea: see every packet that crosses your wire, decide which ones look suspicious, alert. Snort has been doing exactly that since 1998, and it's still one of the cleanest ways to learn what a NIDS actually does — because the rule syntax is plain text, the documentation is excellent, and the path from "install" to "first detection" takes about an hour.
 
-This walkthrough documents the installation and rule-authoring exercise for **Snort**, an open-source network-based intrusion detection system (NIDS). The exercise was performed on a Kali Linux virtual machine, with a second Ubuntu VM acting as a target inside an isolated 192.168.147.0/24 network. The objective was to understand how Snort captures packets in promiscuous mode, how rules are structured, and how a basic detection pipeline produces alerts in response to ICMP probes and reconnaissance scans.
+Here's my walkthrough of doing that on Kali Linux: installing Snort, putting an interface into promiscuous mode, writing two custom detection rules from scratch, and confirming they fire when I poke the host with `ping` and `nmap` from a second VM.
 
 ---
 

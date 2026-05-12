@@ -9,9 +9,9 @@ image:
   alt: "Creating the test user account in Windows XP for the Ophcrack lab."
 ---
 
-## Introduction
+Ophcrack feels like a tool that shouldn't work in 2026. You boot a Linux LiveCD off a USB stick, point it at a Windows machine's hard drive, and a few minutes later it prints the user's password. No exploit, no malware, no clever cryptographic break — just a precomputed lookup table and an old hash format that doesn't fight back.
 
-This walkthrough documents an authorized lab exercise in which **Ophcrack** was used to recover a local Windows XP user account password from its stored hash. The exercise was performed on a personal Dell Precision M70 laptop with no networked or production targets involved. The objective was to understand, in practice, how offline access to the **Security Account Manager (SAM)** database combined with weak password hashing leads to credential recovery, and how modern Windows defends against the same attack pattern.
+It works because Windows protects its password file by *running*, not by encrypting it. Boot something else and the protection evaporates. This post is my walkthrough of that idea, end to end, against a personal Dell Precision M70 running Windows XP — the original target Ophcrack was built for.
 
 > Password cracking against systems you do not own or have explicit written authorization to test is unlawful in most jurisdictions, including the United States (Computer Fraud and Abuse Act), the United Kingdom (Computer Misuse Act 1990), and India (Information Technology Act, Section 66).
 

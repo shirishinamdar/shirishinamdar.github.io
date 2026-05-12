@@ -12,9 +12,9 @@ image:
 > Everything below was performed against **Metasploitable 2**, an intentionally vulnerable virtual machine designed for offensive-security practice, on an isolated host-only network. Running these techniques against any system you do not own or have explicit written authorization to test is a crime in most jurisdictions, including the U.S. (Computer Fraud and Abuse Act), the UK (Computer Misuse Act 1990), and India (IT Act, Section 66).
 {: .prompt-warning }
 
-## Introduction
+Metasploitable 2 is calibrated to fall. Every service on it has a known vulnerability, every CVE has a matching Metasploit module, and the whole thing exists so you can practice the offensive-security workflow against a target that won't fight back.
 
-This walkthrough documents a basic offensive-security lab: an Nmap reconnaissance pass against **Metasploitable 2** from a Kali Linux attacker VM, identification of a known-vulnerable service in the scan output, and exploitation of that service through **Metasploit Framework** to obtain a root shell on the target. The exercise also covers the initial assessment of an **EC-Council STORM kit** — a Raspberry Pi-based portable pentest platform — used as a secondary attacker reference. The objective was to traverse the full early-stage attack chain (recon → vuln identification → exploitation) end to end against a controlled target.
+This post is my walkthrough of that workflow against Metasploitable 2 from a Kali Linux attacker VM: Nmap reconnaissance, identifying the famous vsftpd 2.3.4 backdoor in the service-version output, and using the matching Metasploit module to land a root shell. Along the way I also assessed an EC-Council STORM kit — a Raspberry Pi-based portable pentest platform — as a secondary attacker reference.
 
 ---
 
@@ -134,46 +134,4 @@ Inside `msfconsole`:
 ```
 msf6 > search vsftpd
 msf6 > use exploit/unix/ftp/vsftpd_234_backdoor
-msf6 exploit(unix/ftp/vsftpd_234_backdoor) > set RHOSTS 192.168.146.130
-msf6 exploit(unix/ftp/vsftpd_234_backdoor) > show options
-msf6 exploit(unix/ftp/vsftpd_234_backdoor) > run
-```
-
-Key options for this module:
-
-- `RHOSTS` — the remote target IP.
-- `RPORT` — defaults to 21 (FTP), which is correct here.
-- The payload is hard-coded by this module — when the backdoor is triggered, vsftpd itself spawns the root shell on TCP 6200; no separate payload upload is needed.
-
----
-
-## 6. Root Shell
-
-`run` executes the module. Metasploit prints the banner exchange with vsftpd, the trigger username (`USER backdoored:)`), the connection to TCP 6200, and a `Command shell session 1 opened`. From that point the prompt is *inside* the target VM:
-
-```
-uid=0(root) gid=0(root)
-ls
-hostname
-```
-
-The `uid=0` confirms root. The shell is running as a real Linux process on Metasploitable 2 — the next command, `hostname`, returns `metasploitable`, not `kali`.
-
-![Successful vsftpd 2.3.4 backdoor exploit yielding a root shell on Metasploitable 2.](/assets/img/blog/metasploit-storm-kit/image8.jpg)
-
-From here, the rest of the post-exploitation playbook is available: enumerate users, read `/etc/shadow`, drop a persistence mechanism, pivot to other services on the same host. The lab stopped at proof-of-execution — getting further into post-ex is a separate exercise with its own write-up.
-
----
-
-## Key Observations
-
-- **Service-version detection is the bridge from recon to exploitation.** A bare port scan tells you something is listening on 21. `-sV` tells you what version, and that detail is what lets you decide whether to spend time looking for an exploit at all.
-- **Metasploitable 2 is a calibrated tutorial.** Every step lands cleanly on purpose. Real targets fight back: ports are filtered, version banners are scrubbed, services are patched. The value of Metasploitable is learning the workflow without that friction.
-- **The vsftpd 2.3.4 backdoor is a supply-chain incident, not a coding bug.** The vulnerable code didn't ship by accident — someone replaced the tarball on the project's mirror. It's a useful reminder that "this is from the official source" is a claim, not a proof.
-- **Default credentials are a recurring weakness.** The STORM kit defaults (`pi` / `storm2021`) are publicly documented and trivially searchable. Any device that keeps a documented default password after deployment is one curious attacker away from being owned.
-
----
-
-## Where This Sits in the Stack
-
-The earlier posts in this series cover the defensive side: **pfSense** at the perimeter, **UFW** at the host, **Snort** watching the wire, **Tripwire** watching the filesystem, **Cowrie** as a deception trap, and **Graylog** as the aggregator. This post is the inverse — what those defenses are built to detect and prevent. A real adversary would not stop at proof-of-execution against an intentionally vulnerable VM, but the workflow shown here (recon → identify version → match an exploit → land code execution) is the same first half of every intrusion the defensive stack is designed to catch.
+msf6 exploit(unix/ftp/vsft
