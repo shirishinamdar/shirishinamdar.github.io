@@ -2,7 +2,7 @@
 title: "Cowrie SSH Honeypot Setup with Docker"
 date: 2025-01-30 18:00:00 -0500
 categories: [Deception, Honeypots]
-tags: [Cowrie, SSH Honeypot, Docker, Kali Linux, Project]
+tags: [Cowrie, SSH Honeypot, Docker, Kali Linux, Lab]
 description: Standing up Cowrie — a medium-interaction SSH and Telnet honeypot — in a Docker container on Kali Linux, connecting to it as a test client, and watching the fake-shell session get logged.
 image:
   path: /assets/img/blog/cowrie-ssh-honeypot/image4.png

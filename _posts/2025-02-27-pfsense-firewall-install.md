@@ -2,7 +2,7 @@
 title: "pfSense Firewall Installation on VMware"
 date: 2025-02-27 18:00:00 -0500
 categories: [Network Security, Firewalls]
-tags: [pfSense, Firewall, FreeBSD, VMware, Project]
+tags: [pfSense, Firewall, FreeBSD, VMware, Lab]
 description: Installing pfSense as a virtual firewall in VMware Workstation — building the VM, attaching two network adapters, running through the installer, and reaching the web GUI at 192.168.150.1 from an Ubuntu client.
 image:
   path: /assets/img/blog/pfsense-firewall-install/image13.png
@@ -11,7 +11,7 @@ image:
 
 pfSense is an open-source firewall and router operating system based on **FreeBSD**, designed to manage and secure network traffic. It provides features like stateful packet filtering, VPN (IPsec / OpenVPN / WireGuard), VLAN support, intrusion detection, and traffic shaping — all through a web-based interface. It can be deployed on bare-metal hardware or as a virtual machine to act as a secure gateway between internal networks and the internet.
 
-For this project, pfSense was installed on VMware using its ISO image to build a virtual firewall that simulates a real-world network security gateway for hands-on learning and testing.
+For this lab, pfSense was installed on VMware using its ISO image to build a virtual firewall that simulates a real-world network security gateway for hands-on learning and testing.
 
 ---
 
@@ -67,7 +67,7 @@ A few installer screens to go through:
 
 ## Configuring the Client Machine
 
-The other machine for this project is an **Ubuntu** VM set to host-only networking, which will be used as the host to configure the firewall through.
+The other machine for this lab is an **Ubuntu** VM set to host-only networking, which will be used as the host to configure the firewall through.
 
 ![Ubuntu client VM configured on the same host-only network.](/assets/img/blog/pfsense-firewall-install/image12.png)
 
@@ -90,4 +90,4 @@ Credentials:
 
 ![pfSense LAN configuration screen.](/assets/img/blog/pfsense-firewall-install/image16.png)
 
-pfSense is now configured, and the next projects will build on this base — adding firewall rules, VPN tunnels, and more.
+pfSense is now configured, and the next labs will build on this base — adding firewall rules, VPN tunnels, and more.

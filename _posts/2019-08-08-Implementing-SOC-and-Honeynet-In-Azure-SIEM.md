@@ -50,7 +50,7 @@ Here's how to set up an Azure honeypot virtual machine and configure Azure Senti
 # Step 5: Collect Failed Login Logs
 
 1. Open a Command Prompt on the VM and confirm that it can ping external addresses.
-2. Download and run the `Custom_Security_Log_Exporter.ps1` script from the provided GitHub repository (https://github.com/shirishinamdar/HoneynetSOC-Sentinel-Project/blob/main/Custom_Security_Log_Exporter.ps1).
+2. Download and run the `Custom_Security_Log_Exporter.ps1` script from the provided GitHub repository (https://github.com/shirishinamdar/HoneynetSOC-Sentinel-Lab/blob/main/Custom_Security_Log_Exporter.ps1).
 3. Obtain an API key from `ipgeolocation.io` and add it to the script to retrieve geolocation data for failed login attempts.
 4. The script will monitor the event logs for failed login attempts, grab the attacker's IP address, and create a log file with the failed login data.
    

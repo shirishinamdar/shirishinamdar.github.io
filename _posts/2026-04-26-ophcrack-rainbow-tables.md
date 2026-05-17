@@ -2,11 +2,11 @@
 title: "Cracking Windows Passwords with Ophcrack and Rainbow Tables"
 date: 2026-04-26 10:00:00 -0400
 categories: [Offensive Security, Password Attacks]
-tags: [Ophcrack, Rainbow Tables, Windows, NTLM, SAM, Password Cracking, Project]
+tags: [Ophcrack, Rainbow Tables, Windows, NTLM, SAM, Password Cracking, Lab]
 description: A walkthrough of recovering a local Windows XP user password using Ophcrack and rainbow tables, with technical context on LM/NTLM hashes, SAM extraction, and why the attack fails on modern Windows.
 image:
   path: /assets/img/blog/ophcrack-rainbow-tables/image1.jpeg
-  alt: "Creating the test user account in Windows XP for the Ophcrack project."
+  alt: "Creating the test user account in Windows XP for the Ophcrack lab."
 ---
 
 Ophcrack feels like a tool that shouldn't work in 2026. You boot a Linux LiveCD off a USB stick, point it at a Windows machine's hard drive, and a few minutes later it prints the user's password. No exploit, no malware, no clever cryptographic break — just a precomputed lookup table and an old hash format that doesn't fight back.
@@ -32,11 +32,11 @@ While Windows holds an active session, the SAM hive is locked and cannot be read
 
 ---
 
-## Project Setup
+## Lab Setup
 
 | Item | Detail |
 | --- | --- |
-| Target hardware | Dell Precision M70 (personal project machine) |
+| Target hardware | Dell Precision M70 (personal lab machine) |
 | Target operating system | Windows XP SP3 |
 | Attack tool | Ophcrack LiveCD (Windows XP / 7 build), booted from USB |
 | Rainbow tables | Ophcrack Free Small (alphanumeric, ~700 MB) |
