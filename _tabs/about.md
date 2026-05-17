@@ -30,7 +30,32 @@ Additionally, Shirish actively participates in Capture the Flag (CTF) competitio
 
 Shirish's dedication to cybersecurity excellence has been recognized through various achievements and contributions. He received the Best Performance Award at Securview Inc. for driving an 85% quarter-over-quarter optimization of SOC operations and incident response. Furthermore, he was invited as a guest speaker at IIIT Pune, where he delivered an engaging **"Career in Cybersecurity"** session, inspiring students to pursue careers in field of cybersecurity.
 
-Shirish is an active participant in the cybersecurity community, volunteering at events like the Open Cybersecurity Alliance's **Cybersecurity Automation Village** and serving as a member of the **Google Developer Student Club (GDSC)**
+Shirish is an active participant in the cybersecurity community, volunteering at events like the Open Cybersecurity Alliance's **Cybersecurity Automation Village** and serving as a member of the **Google Developer Student Club (GDSC)**.
+
+## Conferences
+
+Shirish attends cybersecurity conferences regularly to stay current with the field, connect with practitioners, and bring back ideas to apply in his own work.
+
+### Recorded Future Predict 2024
+
+![On the Predict 2024 main stage.](/assets/img/conferences/predict-2024-stage.jpg)
+
+![Predict 2024 — Challenges of Global Security Leaders keynote.](/assets/img/conferences/predict-2024-keynote.jpg)
+
+![Predict 2024 — Comprehensive Ransomware Intelligence session.](/assets/img/conferences/predict-2024-ransomware.jpg)
+
+### Aspen Cyber Summit
+
+![Aspen Cyber Summit — "Brave New World: Preparing for a Post-Quantum Future" panel with speakers from Google, Rapid7, IBM Quantum Safe, and NIST.](/assets/img/conferences/aspen-cyber-summit-post-quantum.jpg)
+
+### Proofpoint — Data Security and Governance
+
+![Proofpoint Data Security and Governance — Enterprise DLP, Insider Threat Management, DSPM, AI Data Governance, and Digital Comms Governance, with the new Data Risk Map.](/assets/img/conferences/proofpoint-data-security.jpg)
+
+### AI+Expo for National Competitiveness (SCSP)
+
+![AI+Expo panel hosted by the Special Competitive Studies Project.](/assets/img/conferences/ai-expo-scsp-panel.jpg)
+
 
 With a diverse skill set encompassing incident response, network security, threat intelligence, digital forensics, penetration testing, AWS, cloud security, and endpoint detection and response (EDR), Shirish is well-equipped to tackle complex cybersecurity challenges. He is proficient in programming languages such as Python, HTML, CSS, JavaScript, x86 Assembly, Bash, and Kusto Query Language, and has extensive experience with SIEM tools like Microsoft ATP , IBM QRadar 
 

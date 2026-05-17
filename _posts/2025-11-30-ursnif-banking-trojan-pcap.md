@@ -2,8 +2,8 @@
 title: "Investigating an Ursnif (Zeus Panda Banker) Infection from a PCAP"
 date: 2025-11-30 18:00:00 -0500
 categories: [Malware Analysis, Threat Intelligence]
-tags: [Ursnif, Banking Trojan, PCAP, Wireshark, NetworkMiner, VirusTotal, MITRE ATT&CK, Lab]
-description: A full malware-traffic-analysis exercise on a Thanksgiving-scenario PCAP — triaging the IDS alerts, correlating through VirusTotal and Dynamite Lab, extracting the host details and executable with NetworkMiner, and pulling the malicious URL out of Wireshark.
+tags: [Ursnif, Banking Trojan, PCAP, Wireshark, NetworkMiner, VirusTotal, MITRE ATT&CK, Project]
+description: A full malware-traffic-analysis exercise on a Thanksgiving-scenario PCAP — triaging the IDS alerts, correlating through VirusTotal and Dynamite Project, extracting the host details and executable with NetworkMiner, and pulling the malicious URL out of Wireshark.
 image:
   path: /assets/img/blog/ursnif-malware-traffic-analysis/image4.png
   alt: "NetworkMiner detecting and quarantining the Ursnif sample from the PCAP."
@@ -52,7 +52,7 @@ An infected internal host (`10.22.15.119`) downloaded a malicious Windows execut
 
 ## 3. Threat Intelligence
 
-Sources used: **VirusTotal**, **Dynamite Lab**.
+Sources used: **VirusTotal**, **Dynamite Project**.
 
 ### VirusTotal
 
@@ -67,13 +67,13 @@ From the details tab we get information about start and end time of the activity
 > **Q1 — What was the date and time the malicious traffic started?**
 > **Solution: `2018-11-7 21:40:47`**
 
-### Dynamite Lab
+### Dynamite Project
 
 From this tool we look at the artifacts section and correlate our information from `alerts.txt`, where the executable file was downloaded from possible infected host `10.22.15.119` via the C2 channel `46.29.160.132`.
 
 We saw a file named **`FkGguv3jLGmxojSWbc.file`** which is categorized under File Type `x-dosexec`. It is not exactly `traffic.pcap`, so we have to know the specific executable file name for that.
 
-![Dynamite Lab artifacts — candidate executable surfaced.](/assets/img/blog/ursnif-malware-traffic-analysis/image14.png)
+![Dynamite Project artifacts — candidate executable surfaced.](/assets/img/blog/ursnif-malware-traffic-analysis/image14.png)
 
 We suspect this is the executable file that was downloaded, and when we add that hash of the file in VirusTotal it relates to **Banking Trojan Ursnif** and being highly malicious.
 
@@ -130,7 +130,7 @@ From the **Files** tab we also found the executable file from the infected file 
 
 ![NetworkMiner Files tab — extracting the executable.](/assets/img/blog/ursnif-malware-traffic-analysis/image12.png)
 
-We see that it is similar results to what we got earlier from Dynamite Lab.
+We see that it is similar results to what we got earlier from Dynamite Project.
 
 ![VirusTotal result for the extracted executable.](/assets/img/blog/ursnif-malware-traffic-analysis/image2.png)
 

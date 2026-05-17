@@ -2,7 +2,7 @@
 title: "Graylog Installation on Debian 12"
 date: 2025-04-03 18:00:00 -0500
 categories: [SIEM, Log Management]
-tags: [Graylog, SIEM, Debian, MongoDB, OpenSearch, Lab]
+tags: [Graylog, SIEM, Debian, MongoDB, OpenSearch, Project]
 description: Installing and configuring Graylog 7.0 on a Debian 12 virtual machine as part of building a centralized log management and SIEM environment — MongoDB 8.0, the Graylog Data Node, and the Graylog Server with secrets, service configuration, and web interface access.
 image:
   path: /assets/img/blog/graylog-siem-debian/image11.jpg

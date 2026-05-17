@@ -2,7 +2,7 @@
 title: "Installing Apache and Configuring a VirtualHost on Ubuntu"
 date: 2025-03-20 18:00:00 -0500
 categories: [Web, System Administration]
-tags: [Apache, VirtualHost, Ubuntu, Web Server, Lab]
+tags: [Apache, VirtualHost, Ubuntu, Web Server, Project]
 description: Installing the Apache HTTP server on Ubuntu, creating a custom website directory, writing a basic HTML page, and configuring a VirtualHost file to route a custom domain to the new site — enabling multi-site hosting on a single server.
 image:
   path: /assets/img/blog/apache-virtualhost-ubuntu/image5.png
@@ -68,7 +68,7 @@ The following HTML was written into the file and saved:
 ```html
 <html>
   <head>
-    <title>GCI Lab Site</title>
+    <title>GCI Project Site</title>
   </head>
   <body>
     <p>I'm running this website on an Ubuntu Server!</p>
