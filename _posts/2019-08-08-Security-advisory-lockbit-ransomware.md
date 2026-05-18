@@ -120,7 +120,7 @@ The Security Operations Center (SOC) plays a pivotal role in combating threats l
 - [Cynet Threat Report on LockBit Ransomware](https://www.cynet.com/blog/threat-report-lockbit-ransomware/)
 - [AlienVault OTX Pulse on LockBit Ransomware](https://otx.alienvault.com/pulse/5ea6f485a4964cdf88019bd4)
 - [SOCRadar: The Story of LockBit Ransomware](https://socradar.io/the-story-of-lockbit-ransomware/)
-- [McAfee Blog: Tales from the Trenches - A LockBit Ransomware Story](https://www.mcafee.com/blogs/other-blogs/mcafee-labs/tales-from-the-trenches-a-lockbit-ransomware-story/)
+- [McAfee Blog: Tales from the Trenches - A LockBit Ransomware Story](https://www.mcafee.com/blogs/other-blogs/mcafee-projects/tales-from-the-trenches-a-lockbit-ransomware-story/)
 
 ---
 

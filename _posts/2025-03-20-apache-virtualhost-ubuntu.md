@@ -2,8 +2,8 @@
 title: "Installing Apache and Configuring a VirtualHost on Ubuntu"
 date: 2025-03-20 18:00:00 -0500
 categories: [Web, System Administration]
-tags: [Apache, VirtualHost, Ubuntu, Web Server, Lab]
-description: Installing the Apache HTTP server on Ubuntu, creating a custom website directory, writing a basic HTML page, and configuring a VirtualHost file to route a custom domain to the new site — enabling multi-site hosting on a single server.
+tags: [Apache, VirtualHost, Ubuntu, Web Server, Project]
+description: Installing the Apache HTTP server on Ubuntu, creating a custom website directory, writing a basic HTML page, and configuring a VirtualHost file to route a custom domain to the new site, enabling multi-site hosting on a single server.
 image:
   path: /assets/img/blog/apache-virtualhost-ubuntu/image5.png
   alt: "Browser showing the custom website served at gci.example.com after VirtualHost activation."
@@ -68,7 +68,7 @@ The following HTML was written into the file and saved:
 ```html
 <html>
   <head>
-    <title>GCI Lab Site</title>
+    <title>GCI Project Site</title>
   </head>
   <body>
     <p>I'm running this website on an Ubuntu Server!</p>
@@ -106,19 +106,19 @@ sudo nano gci.conf
 
 Three directives were added or updated inside the file:
 
-**1. ServerAdmin** — set to a contact email so users can reach the administrator if Apache encounters an error:
+**1. ServerAdmin**, set to a contact email so users can reach the administrator if Apache encounters an error:
 
 ```
 ServerAdmin yourname@example.com
 ```
 
-**2. DocumentRoot** — updated to point to the new site directory:
+**2. DocumentRoot**, updated to point to the new site directory:
 
 ```
 DocumentRoot /var/www/gci/
 ```
 
-**3. ServerName** — added as a new line (not present in the default file) to tell Apache which domain maps to this VirtualHost:
+**3. ServerName**, added as a new line (not present in the default file) to tell Apache which domain maps to this VirtualHost:
 
 ```
 ServerName gci.example.com
@@ -144,7 +144,7 @@ The terminal confirmed the site was enabled and prompted to reload Apache. The r
 sudo service apache2 reload
 ```
 
-Next step — edit your hosts file. This fakes DNS locally on your own machine only.
+Next step, edit your hosts file. This fakes DNS locally on your own machine only.
 
 ```bash
 sudo nano /etc/hosts

@@ -2,14 +2,14 @@
 title: "Graylog Installation on Debian 12"
 date: 2025-04-03 18:00:00 -0500
 categories: [SIEM, Log Management]
-tags: [Graylog, SIEM, Debian, MongoDB, OpenSearch, Lab]
-description: Installing and configuring Graylog 7.0 on a Debian 12 virtual machine as part of building a centralized log management and SIEM environment — MongoDB 8.0, the Graylog Data Node, and the Graylog Server with secrets, service configuration, and web interface access.
+tags: [Graylog, SIEM, Debian, MongoDB, OpenSearch, Project]
+description: Installing and configuring Graylog 7.0 on a Debian 12 virtual machine as part of building a centralized log management and SIEM environment, MongoDB 8.0, the Graylog Data Node, and the Graylog Server with secrets, service configuration, and web interface access.
 image:
   path: /assets/img/blog/graylog-siem-debian/image11.jpg
   alt: "Graylog web interface fully loaded and ready for log ingestion."
 ---
 
-This walkthrough covers installing and configuring **Graylog 7.0** on a Debian 12 virtual machine as part of building a centralized log management and SIEM environment. Graylog was set up with MongoDB 8.0, a Graylog Data Node, and the Graylog Server — including secrets generation, service configuration, and web interface access.
+This walkthrough covers installing and configuring **Graylog 7.0** on a Debian 12 virtual machine as part of building a centralized log management and SIEM environment. Graylog was set up with MongoDB 8.0, a Graylog Data Node, and the Graylog Server, including secrets generation, service configuration, and web interface access.
 
 ---
 
@@ -19,14 +19,14 @@ Graylog is a log management and analysis platform. It collects, indexes, and ana
 
 ### Core Components
 
-- **Graylog Server** — The brain. Processes logs, handles searches, dashboards, alerts.
-- **MongoDB** — Stores metadata and configuration (not the logs themselves).
-- **Elasticsearch** — Stores actual log messages, enables fast search.
-- **Graylog Web Interface** — UI for searching, visualizing, and alerting on logs.
+- **Graylog Server**, The brain. Processes logs, handles searches, dashboards, alerts.
+- **MongoDB**, Stores metadata and configuration (not the logs themselves).
+- **Elasticsearch**, Stores actual log messages, enables fast search.
+- **Graylog Web Interface**, UI for searching, visualizing, and alerting on logs.
 
 ---
 
-## Step 1 — System Prerequisites
+## Step 1, System Prerequisites
 
 Updated the system and installed required packages on **Debian 12.13**.
 
@@ -39,7 +39,7 @@ sudo apt install -y curl gnupg wget apt-transport-https
 
 ---
 
-## Step 2 — Install MongoDB 8.0
+## Step 2, Install MongoDB 8.0
 
 Added the MongoDB 8.0 APT repository, installed `mongodb-org`, and enabled the `mongod` service.
 
@@ -62,9 +62,9 @@ sudo systemctl status mongod
 
 ---
 
-## Step 3 — Set vm.max_map_count
+## Step 3, Set vm.max_map_count
 
-Set `vm.max_map_count=262144` in sysctl — required by the Graylog Data Node (OpenSearch).
+Set `vm.max_map_count=262144` in sysctl, required by the Graylog Data Node (OpenSearch).
 
 ```bash
 echo 'vm.max_map_count=262144' | sudo tee -a /etc/sysctl.d/99-graylog-datanode.conf
@@ -75,7 +75,7 @@ sudo sysctl --system
 
 ---
 
-## Step 4 — Add Graylog Repo & Install Data Node + Server
+## Step 4, Add Graylog Repo & Install Data Node + Server
 
 Downloaded and installed the Graylog 7.0 repository package, then installed `graylog-datanode` and `graylog-server`.
 
@@ -90,7 +90,7 @@ sudo apt install -y graylog-datanode graylog-server
 
 ---
 
-## Step 5 — Generate Secrets
+## Step 5, Generate Secrets
 
 Generated a 96-byte base64 password secret and a SHA256 hash of the admin password.
 
@@ -106,7 +106,7 @@ echo -n "YourStrongAdminPassword" | sha256sum | awk '{print $1}'
 
 ---
 
-## Step 6 — Configure Data Node
+## Step 6, Configure Data Node
 
 Edited `datanode.conf` to set the password secret and OpenSearch heap size.
 
@@ -123,7 +123,7 @@ opensearch_heap = 2g
 
 ---
 
-## Step 7 — Configure Graylog Server
+## Step 7, Configure Graylog Server
 
 Edited `server.conf` to set the password secret, admin password hash, and bind address.
 
@@ -149,7 +149,7 @@ GRAYLOG_SERVER_JAVA_OPTS="-Xms2g -Xmx2g -server -XX:+UseG1GC -XX:-OmitStackTrace
 
 ---
 
-## Step 8 — Start Services
+## Step 8, Start Services
 
 Enabled and started both the Graylog Data Node and Server using `systemctl`.
 
@@ -162,7 +162,7 @@ sudo systemctl enable --now graylog-server
 
 ---
 
-## Step 9 — Preflight Setup & Web Interface Access
+## Step 9, Preflight Setup & Web Interface Access
 
 Retrieved the one-time preflight password from the server log and completed the setup wizard in the browser at `http://192.168.131.128:9000`.
 

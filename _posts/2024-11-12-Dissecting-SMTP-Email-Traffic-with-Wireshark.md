@@ -9,7 +9,7 @@ image:
   alt: "SMTP packet capture opened in Wireshark."
 ---
 
-Most of the early internet's protocols were designed in an era when the word "encrypted" was a research curiosity. SMTP is one of them. The Simple Mail Transfer Protocol still moves a huge fraction of the world's email — and unless STARTTLS or SMTPS is added on top, every command and every byte of the message body travels the wire in plain text.
+Most of the early internet's protocols were designed in an era when the word "encrypted" was a research curiosity. SMTP is one of them. The Simple Mail Transfer Protocol still moves a huge fraction of the world's email, and unless STARTTLS or SMTPS is added on top, every command and every byte of the message body travels the wire in plain text.
 
 This post is my walkthrough of opening a sample SMTP capture in Wireshark and reading the whole conversation back: when the email was sent, what client wrote it, what the message body said, and the network parameters that connect the sender to the recipient's mail server. You can follow along with the same capture from the [Wireshark sample captures wiki](https://wiki.wireshark.org/uploads/__moin_import__/attachments/SampleCaptures/smtp.pcap).
 
@@ -20,7 +20,7 @@ This post is my walkthrough of opening a sample SMTP capture in Wireshark and re
 **SMTP (Simple Mail Transfer Protocol)** is an application-layer protocol used for sending and receiving email messages.  
 It typically operates on **port 25**, while secure alternatives include **587 (STARTTLS)** and **465 (SMTPS)**.
 
-SMTP exchanges plain text commands and responses — meaning the communication is **not encrypted by default**.  
+SMTP exchanges plain text commands and responses, meaning the communication is **not encrypted by default**.  
 To protect data, encryption layers like **SSL/TLS** or **STARTTLS** are added to secure the session.
 
 | Port | Protocol | Encryption             |
@@ -64,7 +64,7 @@ This provides insight into the mail user agent (MUA) that composed and sent the 
 
 The content of the email can be extracted in two ways:
 
-### Method 1 — Inspect IMF Layer
+### Method 1, Inspect IMF Layer
 Open the same frame that identifies the SMTP protocol, then expand **Internet Message Format (IMF)**.  
 Here, Wireshark presents each MIME component of the email, including:
 
@@ -78,7 +78,7 @@ Here, Wireshark presents each MIME component of the email, including:
 
 Each part of the email is represented as a separate MIME section, allowing granular viewing of both the message and attachments.
 
-### Method 2 — Follow the TCP Stream
+### Method 2, Follow the TCP Stream
 Locate the `SMTP: DATA` frame, right-click, and choose **Follow → TCP Stream**.  
 This reconstructs the full conversation, including the raw email content as seen by the mail server.  
 This approach is especially useful when analyzing message headers or investigating email injection attacks.
@@ -99,7 +99,7 @@ From the capture:
 
 - **SMTP** accounts for **46.7%** of packets and **51.5%** of total bytes.  
 - All communication occurs over **TCP** (88.3% of packets), confirming SMTP’s connection-oriented design.  
-- The **Internet Message Format (IMF)** packets represent **1.7%** of total packets but carry **56.4%** of all bytes — this large size corresponds to the email body and attachments.
+- The **Internet Message Format (IMF)** packets represent **1.7%** of total packets but carry **56.4%** of all bytes, this large size corresponds to the email body and attachments.
 
 Filtering the traffic with Wireshark `smtp || tcp.port == 25` gives access to the full sequence of SMTP commands such as HELO, MAIL FROM, RCPT TO, and DATA.
 
