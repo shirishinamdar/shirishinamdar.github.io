@@ -6,7 +6,7 @@ tags: [Port Scanning, Python, socket, Nmap, Network Security, SIEM, Detection, P
 description: A short introduction to writing a port scanner in Python using the socket module, why port scanning matters from both defensive and offensive sides, a line by line walkthrough of the code, a SIEM rule for detecting port scan activity, and safer ways to practice.
 ---
 
-This is the talk I gave to Prof. Ryan's ITP150 morning and afternoon sections, written up as a post. It is a short introduction to port scanning, a complete working Python scanner using only the standard library, a line by line walkthrough of the code, the SIEM detection logic for catching port scans on the defender side, and where to practice this safely.
+A short introduction to port scanning, a complete working Python scanner using only the standard library, a line by line walkthrough of the code, the SIEM detection logic for catching port scans on the defender side, and where to practice this safely.
 
 ---
 
