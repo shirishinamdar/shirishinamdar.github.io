@@ -5,8 +5,8 @@ categories: [Digital Forensics, DFIR]
 tags: [Disk Imaging, FTK Imager, Autopsy, MicroFRED, E01, DD, Hash Verification, Ingest Modules, Digital Forensics, Project]
 description: End to end forensic workflow on the MicroFRED workstation, creating a bit for bit disk image with FTK Imager, choosing between E01 and DD, verifying integrity with hash checks, then importing the image into Autopsy as a new case for ingest module analysis.
 image:
-  path: /assets/img/blog/disk-imaging-microfred/image1.png
-  alt: "Flowchart showing the FRED + FTK Imager + Autopsy disk imaging and analysis pipeline."
+  path: /assets/img/blog/disk-imaging-microfred/image2.jpg
+  alt: "Hard disk seated in the blue hot swap tray, ready for the SATA bay on the MicroFRED workstation."
 ---
 
 Disk imaging is the process of creating an exact, bit for bit copy of a storage device, preserving all data, structure, and metadata for forensic analysis. This walkthrough goes through that pipeline end to end on the **MicroFRED** workstation: image the drive with **FTK Imager**, verify the acquisition with hash checks, then load the image into **Autopsy** as a new case for ingest module analysis.
