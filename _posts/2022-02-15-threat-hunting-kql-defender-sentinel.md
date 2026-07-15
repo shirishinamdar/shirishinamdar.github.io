@@ -12,7 +12,7 @@ The full repo, with a few extras, is on GitHub: [shirishinamdar/Threat-Hunting-K
 
 ---
 
-## Query 1, Detect Potential Coinminer Malware
+## Query 1 - Detect Potential Coinminer Malware
 
 ```kql
 DeviceProcessEvents
@@ -34,7 +34,7 @@ What it does:
 
 ---
 
-## Query 2, Sustained High CPU as a Mining Indicator
+## Query 2 - Sustained High CPU as a Mining Indicator
 
 ```kql
 DevicePerformance
@@ -61,7 +61,7 @@ What it does:
 
 ---
 
-## Query 3, Brute Force on Windows
+## Query 3 - Brute Force on Windows
 
 ```kql
 SecurityEvent
@@ -81,7 +81,7 @@ What it does:
 
 ---
 
-## Query 4, Brute Force on Linux
+## Query 4 - Brute Force on Linux
 
 ```kql
 Syslog
@@ -102,7 +102,7 @@ What it does:
 
 ---
 
-## Query 5, Rare One-Time Devices Connected to a Specific Machine
+## Query 5 - Rare One-Time Devices Connected to a Specific Machine
 
 ```kql
 let DeviceNameParam = "<replace this with full computer name>";
@@ -135,7 +135,7 @@ What it does:
 
 ---
 
-## Query 6, Uncommon Storage Devices Across the Org
+## Query 6 - Uncommon Storage Devices Across the Org
 
 ```kql
 DeviceEvents
@@ -163,7 +163,7 @@ What it does:
 
 ---
 
-## Query 7, USB Storage Device Connections
+## Query 7 - USB Storage Device Connections
 
 ```kql
 DeviceEvents
@@ -204,3 +204,4 @@ A few notes on how I actually use the set, not just run them once:
 These are starting points, not a finished detection program. They pair best with EDR telemetry, threat intelligence, and a defined hunt loop.
 
 The full repo is at [shirishinamdar/Threat-Hunting-KQL-](https://github.com/shirishinamdar/Threat-Hunting-KQL-). Pull requests welcome.
+   

@@ -28,7 +28,7 @@ OpenVPN is an open-source tool that creates a secure, encrypted tunnel between t
 
 ---
 
-## Step 1, Install OpenVPN & Easy-RSA on Both Machines
+## Step 1 - Install OpenVPN & Easy-RSA on Both Machines
 
 Ran `apt update` and `upgrade` on both machines, then installed `openvpn` and `easy-rsa`.
 
@@ -47,7 +47,7 @@ apt update && apt install -y openvpn easy-rsa
 
 ---
 
-## Step 2, Build the PKI on the Server (Kali)
+## Step 2 - Build the PKI on the Server (Kali)
 
 Set up the certificate authority, generated the server cert, DH parameters, and TLS auth key.
 
@@ -71,7 +71,7 @@ openvpn --genkey secret ta.key
 
 ---
 
-## Step 3, Generate Client Certificate
+## Step 3 - Generate Client Certificate
 
 Generated a separate certificate for the client machine. Each device that connects to the VPN needs its own certificate.
 
@@ -86,7 +86,7 @@ Generated a separate certificate for the client machine. Each device that connec
 
 ---
 
-## Step 4, Create server.conf on Kali
+## Step 4 - Create server.conf on Kali
 
 Created `/etc/openvpn/server.conf` with the server settings. This file tells OpenVPN where to find the certificates, which port to listen on, what IP range to give to VPN clients, and what encryption to use.
 
@@ -120,7 +120,7 @@ Port 1194 UDP is the default OpenVPN port. The `server 10.8.0.0` line means VPN 
 
 ---
 
-## Step 5, Enable IP Forwarding & Start OpenVPN Server
+## Step 5 - Enable IP Forwarding & Start OpenVPN Server
 
 IP forwarding allows the server to pass traffic between the VPN tunnel and the regular network. Without this, packets coming in through the VPN have nowhere to go.
 
@@ -135,7 +135,7 @@ sudo systemctl enable openvpn@server
 
 ---
 
-## Step 6, Transfer Certificates from Kali to Linux Mint
+## Step 6 - Transfer Certificates from Kali to Linux Mint
 
 The client machine needs a copy of the CA cert, its own certificate, its private key, and the `ta.key`. These were served from Kali using Python's built-in HTTP server and downloaded on Linux Mint through the browser.
 
@@ -160,7 +160,7 @@ On Linux Mint, open a browser and go to `http://192.168.147.131:8080`, download 
 
 ---
 
-## Step 7, Create client.ovpn on Linux Mint
+## Step 7 - Create client.ovpn on Linux Mint
 
 Created the client config file on Linux Mint. This tells OpenVPN on the client side where the server is, which certs to use, and what settings to match the server with.
 
@@ -191,7 +191,7 @@ The `remote` line points to the Kali server IP and port. The `tls-auth` line use
 
 ---
 
-## Step 8, Connect & Verify the VPN Tunnel
+## Step 8 - Connect & Verify the VPN Tunnel
 
 Ran OpenVPN on Linux Mint with the client config. The tunnel came up and Linux Mint was assigned VPN IP `10.8.0.2` by the server.
 

@@ -23,11 +23,11 @@ The hard disk to be imaged is placed into a blue hot swap tray and securely inse
 
 ![Hard disk seated in the blue hot swap tray, ready for the SATA bay on the MicroFRED.](/assets/img/blog/disk-imaging-microfred/image2.jpg)
 
-### Step 1, Open FTK Imager
+### Step 1 - Open FTK Imager
 
 Launch **FTK Imager** on the FRED machine. Run it as **Administrator** for full disk access.
 
-### Step 2, Verify the Drive is Detected
+### Step 2 - Verify the Drive is Detected
 
 - Click **File > Add Evidence Item**.
 - Choose **Physical Drive**.
@@ -37,13 +37,13 @@ Launch **FTK Imager** on the FRED machine. Run it as **Administrator** for full 
 
 Do **not** check "Read Entire Drive" unless you want it loaded into memory, which is usually unnecessary.
 
-### Step 3, Create a Forensic Image
+### Step 3 - Create a Forensic Image
 
 - Go to **File > Create Disk Image**.
 - Choose **Physical Drive**, click **Next**.
 - Select the correct source drive (verify it is the right one), click **Finish**.
 
-### Step 4, Select Image Type
+### Step 4 - Select Image Type
 
 Choose the image type, one at a time:
 
@@ -54,17 +54,17 @@ Click **Next**.
 
 ![FTK Imager image type selection screen showing E01 and Raw (dd) options.](/assets/img/blog/disk-imaging-microfred/image4.png)
 
-### Step 5, Fill in Case Info (Optional)
+### Step 5 - Fill in Case Info (Optional)
 
 Enter investigator name, case number, evidence number, and so on. These fields are optional but recommended for documentation. Click **Next**.
 
-### Step 6, Choose Image Destination
+### Step 6 - Choose Image Destination
 
 - Click **Add** and choose the destination path (external USB drive, evidence partition, and so on).
 - Choose segment size (default is fine), compression (only meaningful for E01), and add MD5 / SHA1 hashes.
 - Click **Finish**.
 
-### Step 7, Start Imaging
+### Step 7 - Start Imaging
 
 Review the summary, click **Start**, and monitor progress in the status window.
 
@@ -72,7 +72,7 @@ Review the summary, click **Start**, and monitor progress in the status window.
 
 ![FTK Imager status output as the image is written and hashed.](/assets/img/blog/disk-imaging-microfred/image6.jpg)
 
-### Step 8, Verify the Image
+### Step 8 - Verify the Image
 
 FTK Imager calculates hashes during and after imaging. Make sure the **Verification hash matches the Acquisition hash**. This is what confirms image integrity. If they don't match, the image is suspect and you start over.
 
@@ -116,4 +116,4 @@ The ingest modules are what actually analyze the disk contents. Pick the modules
 
 ![Autopsy ingest module selection screen for the imported data source.](/assets/img/blog/disk-imaging-microfred/image8.jpg)
 
-From here, Autopsy works through the disk and surfaces the artifacts each module finds, ready for investigator review.
+From here, Autopsy works through the disk and surfaces the artifacts each module finds, ready for investigat

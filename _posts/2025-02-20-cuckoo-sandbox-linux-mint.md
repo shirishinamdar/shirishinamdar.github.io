@@ -15,7 +15,7 @@ Cuckoo runs suspicious files and URLs inside isolated VMs, monitors their behavi
 
 ---
 
-## Step 1, Install System Libraries
+## Step 1 - Install System Libraries
 
 Essential dependencies like `libffi`, `libssl`, and `swig` are needed for Python modules and secure operations in Cuckoo.
 
@@ -28,7 +28,7 @@ sudo apt install libffi-dev libssl-dev libjpeg-dev zlib1g-dev swig
 
 ---
 
-## Step 2, Install MongoDB 7.0
+## Step 2 - Install MongoDB 7.0
 
 MongoDB acts as the database backend for storing analysis results. Installing and enabling it lets Cuckoo save and query data.
 
@@ -60,7 +60,7 @@ sudo systemctl status mongod
 
 ---
 
-## Step 3, Install PostgreSQL
+## Step 3 - Install PostgreSQL
 
 PostgreSQL is optional but worth installing for advanced Cuckoo features, especially if you want PostgreSQL instead of SQLite for VM metadata and reporting.
 
@@ -78,7 +78,7 @@ Cuckoo Sandbox is built on Python and requires specific versions and libraries t
 
 ---
 
-## Step 4, Download Anaconda
+## Step 4 - Download Anaconda
 
 ```bash
 curl -O https://repo.anaconda.com/archive/Anaconda3-2025.12-2-Linux-x86_64.sh
@@ -90,7 +90,7 @@ curl -O https://repo.anaconda.com/archive/Anaconda3-2025.12-2-Linux-x86_64.sh
 
 ---
 
-## Step 5, Update conda
+## Step 5 - Update conda
 
 Updating all packages and dependencies keeps the environment stable, secure, and compatible for Cuckoo.
 
@@ -109,7 +109,7 @@ conda update conda
 
 ---
 
-## Step 6, Add Python to the Anaconda Environment
+## Step 6 - Add Python to the Anaconda Environment
 
 ```bash
 conda search python
@@ -127,7 +127,7 @@ Then I dropped into the environment from a terminal to install Cuckoo itself.
 
 ---
 
-## Step 7, Install Cuckoo
+## Step 7 - Install Cuckoo
 
 ```bash
 conda create -n cuckoo2 python=2.7
@@ -145,13 +145,13 @@ Running `cuckoo` confirms the install.
 
 ---
 
-## Step 8, Cuckoo Main Configuration
+## Step 8 - Cuckoo Main Configuration
 
 Cuckoo's main configuration file `cuckoo.conf` tells the sandbox where to store data, how to run VMs safely, and how to analyze malware properly.
 
 ---
 
-## Step 9, Enable MongoDB Reporting
+## Step 9 - Enable MongoDB Reporting
 
 Before launching the Cuckoo web interface, set `enabled = yes` for the MongoDB section in `reporting.conf`. Without this, results won't be written to MongoDB and the web UI won't have data to display.
 
